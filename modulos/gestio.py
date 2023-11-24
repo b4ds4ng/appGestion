@@ -1,10 +1,11 @@
 import tkinter as tk
 from  tkinter import ttk
+import sqlite3
 
 
 
+class Gestio:
 
-class gestio:
     
     def afegir():
         pass
@@ -17,3 +18,4 @@ class gestio:
 
     def cerca():
         pass
+
