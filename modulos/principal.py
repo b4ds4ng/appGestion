@@ -2,7 +2,7 @@ import tkinter as tk
 from  tkinter import ttk, Frame
 import sqlite3
 from functools import partial
-
+import formularios as formu
 
 
 class Iniciador(tk.Tk):
