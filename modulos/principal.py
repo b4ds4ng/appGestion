@@ -1,6 +1,7 @@
 import tkinter as tk
 from  tkinter import ttk, Frame
 import sqlite3
+from functools import partial
 
 
 
@@ -32,65 +33,47 @@ class Iniciador(tk.Tk):
                                           padx=10, 
                                           pady=10, 
                                           bg='sky blue')
-        self.lateral_izquierdo.pack(side="left", expand=tk.NO)
+        self.lateral_izquierdo.pack(side="left", expand=tk.NO, fill=tk.BOTH)
 
         self.lateral_derecho = tk.Frame(self, relief=tk.SOLID, bg="white")
         self.lateral_derecho.pack(side="right", expand=tk.YES, fill=tk.BOTH)
 
     def botones(self):
-        estilo = ttk.Style()
-        estilo.configure("Clientes.TButton", 
-                         padding=0, 
-                         foreground="DeepSkyBlue2", 
-                         background="LightSkyBlue1", 
-                         border="None")
 
-        clientes = ttk.Button(self.lateral_izquierdo, 
-                              text="Clients", style="Clientes.TButton")
-                              
-        clientes.place(x=10, y=150)
+       ancho_menu = 20
+       alto_menu = 2
+        
+       self.bclientes = tk.Button(self.lateral_izquierdo, command=None)
+       self.bproductos = tk.Button(self.lateral_izquierdo, command=None)
+       self.bcasos = tk.Button(self.lateral_izquierdo, command=None)
+       self.bbuscar = tk.Button(self.lateral_izquierdo, command=None)
+       self.bsortir =tk.Button(self.lateral_izquierdo, command=self.salida)
 
-        estilo = ttk.Style()
-        estilo.configure("Productos.TButton", 
-                         padding=0, 
-                         foreground="DeepSkyBlue2", 
-                         background="LightSkyBlue1", 
-                         border="None")
+       info_boton = [("Clients", self.bclientes),
+                     ("Productes",self.bproductos),
+                     ("Cassos", self.bcasos),
+                     ("Cercar", self.bbuscar),
+                     ("Sortir", self.bsortir)]
+       for text, button in info_boton:
+            self.config_boton(button, text, ancho_menu, alto_menu)
+        
+    
+    def config_boton(self, button, text, ancho_menu, alto_menu):
+        button.config(text=f"{text}", bd=0, bg="sky blue", fg="white",
+                      width=ancho_menu, height=alto_menu)
+        button.pack()
+        self.encima_fuera(button)
 
-        productos = ttk.Button(self.lateral_izquierdo, 
-                               text="Productes", 
-                               style="Productos.TButton")
-        productos.place(x=10, y=180)
+    def encima_fuera(self, button):
+        button.bind("<Enter>", lambda event: self.on_enter(event, button))
+        button.bind("<Leave>", lambda event: self.on_leave(event, button))
 
-        estilo = ttk.Style()
-        estilo.configure("Casos.TButton", 
-                         padding=0, 
-                         foreground="DeepSkyBlue2", 
-                         background="LightSkyBlue1", 
-                         border="None")
-        casos = ttk.Button(self.lateral_izquierdo, 
-                           text="Cassos", 
-                           style="Casos.TButton")
-        casos.place(x=10, y=210)
+    def on_enter(self, event, button):
+        button.config(bg="sky blue", fg="#5ca7f2")
 
-        estilo = ttk.Style()
-        estilo.configure("Buscar.TButton", 
-                         padding=0, 
-                         foreground="DeepSkyBlue2", 
-                         background="LightSkyBlue1", 
-                         border="None")
-        buscar = ttk.Button(self.lateral_izquierdo, 
-                            text="Cercar", 
-                            style="Buscar.TButton")
-        buscar.place(x=10, y=240)
+    def on_leave(self, event, button):
+        button.config(bg="sky blue", fg="white")
 
-        estilo = ttk.Style()
-        estilo.configure("Salir.TButton", 
-                         padding=0, 
-                         foreground="DeepSkyBlue2", 
-                         background="LightSkyBlue1", 
-                         border="None")
-        salir = ttk.Button(self.lateral_izquierdo, 
-                           text="Sortir", 
-                           style="Salir.TButton")
-        salir.place(x=10, y=500)
+    def salida(self):
+        exit()
+    
