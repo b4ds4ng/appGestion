@@ -1,19 +1,27 @@
-from principal import ventana_principal, paneles
+import tkinter as tk
 
 
 class Formularios(tk.Tk):
-    pass
-    def form_clientes(self):
-        pass
+    
+    def __init__(self):
+        super().__init__()
+        
+        
+    def form_clientes(clients):
+
+        print("Hola, vengo del fomulario")
 
     def form_productos(self):
-        pass
+
+        print("vengo de productos")
 
     def form_casos(self):
-        pass
+
+        print("vengo de cassos")
 
     def form_buscar(self):
-        pass
+
+        print("buscas algo!")
 
     def insertar(self):
         pass
@@ -27,6 +35,5 @@ class Formularios(tk.Tk):
     def cancelar(self):
         pass
 
-    def buscar(sel):
-        pass
+    
 

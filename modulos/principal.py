@@ -1,8 +1,6 @@
 import tkinter as tk
-from  tkinter import ttk, Frame
 import sqlite3
-from functools import partial
-import formularios as formu
+from .formularios import Formularios
 
 
 class Iniciador(tk.Tk):
@@ -12,6 +10,7 @@ class Iniciador(tk.Tk):
         self.ventana_principal()
         self.paneles()
         self.botones()
+        
         
 
     def ventana_principal(self):
@@ -43,10 +42,10 @@ class Iniciador(tk.Tk):
        ancho_menu = 20
        alto_menu = 2
         
-       self.bclientes = tk.Button(self.lateral_izquierdo, command=None)
-       self.bproductos = tk.Button(self.lateral_izquierdo, command=None)
-       self.bcasos = tk.Button(self.lateral_izquierdo, command=None)
-       self.bbuscar = tk.Button(self.lateral_izquierdo, command=None)
+       self.bclientes = tk.Button(self.lateral_izquierdo, command=self.clients)
+       self.bproductos = tk.Button(self.lateral_izquierdo, command=self.productes)
+       self.bcasos = tk.Button(self.lateral_izquierdo, command=self.cassos)
+       self.bbuscar = tk.Button(self.lateral_izquierdo, command=self.buscar)
        self.bsortir =tk.Button(self.lateral_izquierdo, command=self.salida)
 
        info_boton = [("Clients", self.bclientes),
@@ -59,7 +58,7 @@ class Iniciador(tk.Tk):
         
     
     def config_boton(self, button, text, ancho_menu, alto_menu):
-        button.config(text=f"{text}", bd=0, bg="sky blue", fg="white",
+        button.config(text=f"{text}", bd=0, bg="sky blue", font="Roboto", fg="white",
                       width=ancho_menu, height=alto_menu)
         button.pack()
         self.encima_fuera(button)
@@ -73,6 +72,20 @@ class Iniciador(tk.Tk):
 
     def on_leave(self, event, button):
         button.config(bg="sky blue", fg="white")
+
+    
+    def clients(self):
+        
+        Formularios.form_clientes(self)
+
+    def productes(self):
+        Formularios.form_productos(self)
+
+    def cassos(self):
+        Formularios.form_casos(self)
+
+    def buscar(self):
+        Formularios.form_buscar(self)
 
     def salida(self):
         exit()
