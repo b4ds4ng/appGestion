@@ -7,7 +7,13 @@ class Formularios(tk.Tk):
         super().__init__()
         
         
-    def form_clientes(clients):
+    def form_clientes(self):
+
+        self.lateral_derecho = tk.Frame(self, relief=tk.SOLID, bg="white")
+        self.lateral_derecho_label = tk.Label(self.lateral_derecho, text="Formulario Clients", 
+                                              font="Roboto", bg="white")
+        self.lateral_derecho.pack(side="right", expand=tk.YES, fill=tk.BOTH)
+        self.lateral_derecho_label.pack(side="top", ipadx=350, ipady=10)
 
         print("Hola, vengo del fomulario")
 
