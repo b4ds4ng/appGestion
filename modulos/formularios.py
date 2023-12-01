@@ -16,7 +16,7 @@ class Formularios(tk.Tk):
         self.lateral_derecho = tk.Frame(self, relief=tk.SOLID, bg="white")
         self.lateral_derecho_label = tk.Label(self.lateral_derecho, text="Formulario Clients", 
                                               font="Roboto", bg="white", fg="blue")
-        self.lateral_derecho.pack(side="right", expand=tk.NO, fill=tk.BOTH)
+        self.lateral_derecho.pack(side="right", expand=tk.YES, fill=tk.BOTH)
         self.lateral_derecho_label.pack(expand=tk.NO)
 
         # Create entrys and labels
@@ -37,7 +37,7 @@ class Formularios(tk.Tk):
         self.lateral_derecho = tk.Frame(self, relief=tk.SOLID, bg="white")
         self.lateral_derecho_label = tk.Label(self.lateral_derecho, text="Formulario Productes", 
                                               font="Roboto", bg="white", fg="blue")
-        self.lateral_derecho.pack(side="right", expand=tk.NO, fill=tk.BOTH)
+        self.lateral_derecho.pack(side="right", expand=tk.YES, fill=tk.BOTH)
         self.lateral_derecho_label.pack(expand=tk.NO)
 
     def form_casos(self):
@@ -45,7 +45,7 @@ class Formularios(tk.Tk):
         self.lateral_derecho = tk.Frame(self, relief=tk.SOLID, bg="white")
         self.lateral_derecho_label = tk.Label(self.lateral_derecho, text="Formulario Cassos", 
                                               font="Roboto", bg="white", fg="blue")
-        self.lateral_derecho.pack(side="right", expand=tk.NO, fill=tk.BOTH)
+        self.lateral_derecho.pack(side="right", expand=tk.YES, fill=tk.BOTH)
         self.lateral_derecho_label.pack(expand=tk.NO)
 
     def form_buscar(self):
@@ -53,7 +53,7 @@ class Formularios(tk.Tk):
         self.lateral_derecho = tk.Frame(self, relief=tk.SOLID, bg="white")
         self.lateral_derecho_label = tk.Label(self.lateral_derecho, text="Formulario Cercar", 
                                               font="Roboto", bg="white", fg="blue")
-        self.lateral_derecho.pack(side="right", expand=tk.NO, fill=tk.BOTH)
+        self.lateral_derecho.pack(side="right", expand=tk.YES, fill=tk.BOTH)
         self.lateral_derecho_label.pack(expand=tk.NO)
 
     def insertar(self):

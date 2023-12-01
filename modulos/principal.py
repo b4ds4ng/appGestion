@@ -78,9 +78,12 @@ class Iniciador(tk.Tk):
             self.bcasos['state'] = tk.NORMAL
             self.bproductos['state'] = tk.NORMAL
             self.bbuscar['state'] = tk.NORMAL
-            Formularios.form_clientes(self)
+            
+       if self.lateral_derecho is None:
+            self.lateral_derecho(self)        
        else:
-            self.bclientes['state'] = tk.NORMAL
+            self.lateral_derecho.pack_forget()   
+            Formularios.form_clientes(self)
         
         
     def productes(self):
@@ -91,8 +94,10 @@ class Iniciador(tk.Tk):
             self.bproductos['state'] = tk.DISABLED
             self.bbuscar['state'] = tk.NORMAL
 
-        if self.lateral_derecho is not None:
-            self.lateral_derecho.pack_forget()
+        if self.lateral_derecho is None:
+            self.lateral_derecho(self)   
+        else:
+            self.lateral_derecho.pack_forget()   
             Formularios.form_productos(self)
 
     def cassos(self):
@@ -102,7 +107,9 @@ class Iniciador(tk.Tk):
             self.bcasos['state'] = tk.DISABLED
             self.bbuscar['state'] = tk.NORMAL
         
-        if self.lateral_derecho is not None:
+        if self.lateral_derecho is None:
+            self.lateral_derecho(self)
+        else:
             self.lateral_derecho.pack_forget()
             Formularios.form_casos(self)
 
@@ -113,7 +120,9 @@ class Iniciador(tk.Tk):
             self.bcasos['state'] = tk.NORMAL
             self.bbuscar['state'] = tk.DISABLED
 
-        if self.lateral_derecho is not None:
+        if self.lateral_derecho is None:
+            self.lateral_derecho(self)
+        else:
             self.lateral_derecho.pack_forget()
             Formularios.form_buscar(self)
 
