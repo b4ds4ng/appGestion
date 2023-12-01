@@ -21,9 +21,6 @@ class Iniciador(tk.Tk):
         self.iconphoto(True, self.icono)
 
     def paneles(self):
-        #self.marc_clients = tk.Frame(self)
-                                  
-        #self.marc_clients.pack(side='right', expand=tk.YES, fill=tk.BOTH)
         
         self.lateral_izquierdo = tk.Frame(self, 
                                           relief=tk.SOLID, 
@@ -75,17 +72,50 @@ class Iniciador(tk.Tk):
 
     
     def clients(self):
-        
-        Formularios.form_clientes(self)
 
+       if (self.bclientes['state'] == tk.NORMAL):
+            self.bclientes['state'] = tk.DISABLED
+            self.bcasos['state'] = tk.NORMAL
+            self.bproductos['state'] = tk.NORMAL
+            self.bbuscar['state'] = tk.NORMAL
+            Formularios.form_clientes(self)
+       else:
+            self.bclientes['state'] = tk.NORMAL
+        
+        
     def productes(self):
-        Formularios.form_productos(self)
+
+        if (self.bproductos['state'] == tk.NORMAL):
+            self.bclientes['state'] = tk.NORMAL
+            self.bcasos['state'] = tk.NORMAL
+            self.bproductos['state'] = tk.DISABLED
+            self.bbuscar['state'] = tk.NORMAL
+
+        if self.lateral_derecho is not None:
+            self.lateral_derecho.pack_forget()
+            Formularios.form_productos(self)
 
     def cassos(self):
-        Formularios.form_casos(self)
+        if (self.bcasos['state'] == tk.NORMAL):
+            self.bclientes['state'] = tk.NORMAL
+            self.bproductos['state'] = tk.NORMAL
+            self.bcasos['state'] = tk.DISABLED
+            self.bbuscar['state'] = tk.NORMAL
+        
+        if self.lateral_derecho is not None:
+            self.lateral_derecho.pack_forget()
+            Formularios.form_casos(self)
 
     def buscar(self):
-        Formularios.form_buscar(self)
+        if (self.bbuscar['state'] == tk.NORMAL):
+            self.bclientes['state'] = tk.NORMAL
+            self.bproductos['state'] = tk.NORMAL
+            self.bcasos['state'] = tk.NORMAL
+            self.bbuscar['state'] = tk.DISABLED
+
+        if self.lateral_derecho is not None:
+            self.lateral_derecho.pack_forget()
+            Formularios.form_buscar(self)
 
     def salida(self):
         exit()

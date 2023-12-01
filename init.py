@@ -1,4 +1,5 @@
 from modulos.principal import Iniciador
+from modulos.formularios import Formularios
 
 
 app = Iniciador()
