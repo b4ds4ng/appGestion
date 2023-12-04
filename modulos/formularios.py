@@ -26,7 +26,7 @@ class Formularios(tk.Tk):
         self.entrada.place(x=45, y=40)
         self.nombre.place(x=10, y=40)
 
-        # Create buttons
+        # Create buttons form_clientes
         
     
 
@@ -40,6 +40,8 @@ class Formularios(tk.Tk):
         self.lateral_derecho.pack(side="right", expand=tk.YES, fill=tk.BOTH)
         self.lateral_derecho_label.pack(expand=tk.NO)
 
+        # buttons form_productos
+
     def form_casos(self):
 
         self.lateral_derecho = tk.Frame(self, relief=tk.SOLID, bg="white")
@@ -48,6 +50,8 @@ class Formularios(tk.Tk):
         self.lateral_derecho.pack(side="right", expand=tk.YES, fill=tk.BOTH)
         self.lateral_derecho_label.pack(expand=tk.NO)
 
+        # buttons from_casos
+
     def form_buscar(self):
 
         self.lateral_derecho = tk.Frame(self, relief=tk.SOLID, bg="white")
@@ -55,6 +59,8 @@ class Formularios(tk.Tk):
                                               font="Roboto", bg="white", fg="blue")
         self.lateral_derecho.pack(side="right", expand=tk.YES, fill=tk.BOTH)
         self.lateral_derecho_label.pack(expand=tk.NO)
+
+        # buttons form_buscar
 
     def insertar(self):
         pass
