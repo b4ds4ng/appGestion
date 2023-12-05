@@ -43,7 +43,7 @@ class Iniciador(tk.Tk):
        self.bproductos = tk.Button(self.lateral_izquierdo, command=self.productes)
        self.bcasos = tk.Button(self.lateral_izquierdo, command=self.cassos)
        self.bbuscar = tk.Button(self.lateral_izquierdo, command=self.buscar)
-       self.bsortir =tk.Button(self.lateral_izquierdo, command=self.salida)
+       self.bsortir = tk.Button(self.lateral_izquierdo, command=self.salida)
 
        info_boton = [("Clients", self.bclientes),
                      ("Productes",self.bproductos),
