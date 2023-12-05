@@ -1,6 +1,6 @@
 from modulos.principal import Iniciador
 from modulos.formularios import Formularios
-from modulos import Datos
+from modulos.sql import Datos
 
 
 app = Iniciador()
