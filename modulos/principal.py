@@ -39,11 +39,11 @@ class Iniciador(tk.Tk):
        ancho_menu = 20
        alto_menu = 2
         
-       self.bclientes = tk.Button(self.lateral_izquierdo, command=self.clients)
-       self.bproductos = tk.Button(self.lateral_izquierdo, command=self.productes)
-       self.bcasos = tk.Button(self.lateral_izquierdo, command=self.cassos)
-       self.bbuscar = tk.Button(self.lateral_izquierdo, command=self.buscar)
-       self.bsortir = tk.Button(self.lateral_izquierdo, command=self.salida)
+       self.bclientes = tk.Button(self.lateral_izquierdo, command=self.clients, cursor="hand2")
+       self.bproductos = tk.Button(self.lateral_izquierdo, command=self.productes, cursor="hand2")
+       self.bcasos = tk.Button(self.lateral_izquierdo, command=self.cassos, cursor="hand2")
+       self.bbuscar = tk.Button(self.lateral_izquierdo, command=self.buscar, cursor="hand2")
+       self.bsortir = tk.Button(self.lateral_izquierdo, command=self.salida, cursor="hand2")
 
        info_boton = [("Clients", self.bclientes),
                      ("Productes",self.bproductos),
@@ -84,6 +84,9 @@ class Iniciador(tk.Tk):
        else:
             self.lateral_derecho.pack_forget()   
             Formularios.form_clientes(self)
+            Formularios.entrys(self)
+            Formularios.entrys(self)
+            Formularios.botones_form(self)
         
         
     def productes(self):
@@ -99,6 +102,8 @@ class Iniciador(tk.Tk):
         else:
             self.lateral_derecho.pack_forget()   
             Formularios.form_productos(self)
+            Formularios.entrys(self)
+            Formularios.botones_form(self)
 
     def cassos(self):
         if (self.bcasos['state'] == tk.NORMAL):
@@ -112,6 +117,8 @@ class Iniciador(tk.Tk):
         else:
             self.lateral_derecho.pack_forget()
             Formularios.form_casos(self)
+            Formularios.entrys(self)
+            Formularios.botones_form(self)
 
     def buscar(self):
         if (self.bbuscar['state'] == tk.NORMAL):
@@ -125,6 +132,8 @@ class Iniciador(tk.Tk):
         else:
             self.lateral_derecho.pack_forget()
             Formularios.form_buscar(self)
+            Formularios.entrys(self)
+            Formularios.botones_form(self)
 
     def salida(self):
         exit()
