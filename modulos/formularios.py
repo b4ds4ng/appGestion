@@ -5,6 +5,8 @@ from  tkinter import ttk, font
 
 
 
+
+
 class Formularios(tk.Tk):
     
     #def __init__(self):
@@ -91,6 +93,14 @@ class Formularios(tk.Tk):
                              cursor="hand2")
         self.bcancelar.pack_configure(side="left", anchor=tk.NW)
         self.bcancelar.pack(padx=0, pady=110)
+
+        self.encima_fuera(self.bnuevo)
+        self.on_enter(self, self.bnuevo)
+        self.on_leave(self, self.bnuevo)
+
+    
+
+
 
        
         
