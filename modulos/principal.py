@@ -83,7 +83,8 @@ class Iniciador(tk.Tk):
             self.lateral_derecho(self)        
        else:
             self.lateral_derecho.pack_forget()   
-            Formularios.form_clientes(self)
+            Formularios.frames(self)
+            Formularios.etiqueta(self, text="Clients")
             Formularios.entrys(self)
             Formularios.entrys(self)
             Formularios.botones_form(self)
@@ -101,7 +102,8 @@ class Iniciador(tk.Tk):
             self.lateral_derecho(self)   
         else:
             self.lateral_derecho.pack_forget()   
-            Formularios.form_productos(self)
+            Formularios.frames(self)
+            Formularios.etiqueta(self, text="Productes")
             Formularios.entrys(self)
             Formularios.botones_form(self)
 
@@ -116,7 +118,8 @@ class Iniciador(tk.Tk):
             self.lateral_derecho(self)
         else:
             self.lateral_derecho.pack_forget()
-            Formularios.form_casos(self)
+            Formularios.frames(self)
+            Formularios.etiqueta(self, text="Cassos")
             Formularios.entrys(self)
             Formularios.botones_form(self)
 
@@ -131,9 +134,10 @@ class Iniciador(tk.Tk):
             self.lateral_derecho(self)
         else:
             self.lateral_derecho.pack_forget()
-            Formularios.form_buscar(self)
+            Formularios.frames(self)
+            Formularios.etiqueta(self, text="Cercar")
             Formularios.entrys(self)
-            Formularios.botones_form(self)
+            Formularios.botones_buscar(self)
 
     def salida(self):
         exit()

@@ -3,51 +3,20 @@ from  tkinter import ttk, font
 
 
 
-
-
-
-
 class Formularios(tk.Tk):
-    
-    #def __init__(self):
-        #super().__init__()
             
-    def form_clientes(self):
-
-        # Create frame, label
-        
-        self.lateral_derecho = tk.Frame(self, relief=tk.SOLID, bg="white")
-        self.lateral_derecho_label = tk.Label(self.lateral_derecho, text="Formulario Clients", 
-                                              font=("Roboto", 10, "bold"), bg="white", fg="blue")
-        self.lateral_derecho.pack(side="right", expand=tk.YES, fill=tk.BOTH)
-        self.lateral_derecho_label.pack(expand=tk.NO)
-  
-    def form_productos(self):
+    def frames(self):
 
         self.lateral_derecho = tk.Frame(self, relief=tk.SOLID, bg="white")
-        self.lateral_derecho_label = tk.Label(self.lateral_derecho, text="Formulario Productes", 
-                                              font=("Roboto", 10, "bold"), bg="white", fg="blue")
         self.lateral_derecho.pack(side="right", expand=tk.YES, fill=tk.BOTH)
-        self.lateral_derecho_label.pack(expand=tk.NO)
 
-
-    def form_casos(self):
-
-        self.lateral_derecho = tk.Frame(self, relief=tk.SOLID, bg="white")
-        self.lateral_derecho_label = tk.Label(self.lateral_derecho, text="Formulario Cassos", 
-                                              font=("Roboto", 10, "bold"), bg="white", fg="blue")
-        self.lateral_derecho.pack(side="right", expand=tk.YES, fill=tk.BOTH)
-        self.lateral_derecho_label.pack(expand=tk.NO)
-
-
-    def form_buscar(self):
-
-        self.lateral_derecho = tk.Frame(self, relief=tk.SOLID, bg="white")
-        self.lateral_derecho_label = tk.Label(self.lateral_derecho, text="Formulario Cercar", 
-                                              font=("Roboto", 10, "bold"), bg="white", fg="blue")
-        self.lateral_derecho.pack(side="right", expand=tk.YES, fill=tk.BOTH)
-        self.lateral_derecho_label.pack(expand=tk.NO)
-
+    def etiqueta(self, text):
+        info_label = [(text)]
+            
+        for text in info_label:
+            self.lateral_derecho_label = tk.Label(self.lateral_derecho, text=f"{text}",
+                                                  font=("Roboto", 10, "bold"), bg="white", fg="blue")
+            self.lateral_derecho_label.pack(expand=tk.NO)
 
     def entrys(self):
         self.nombre = tk.Label(self.lateral_derecho, text="Nom", bg="white", font=("Roboto", 11,"bold"))
@@ -74,7 +43,7 @@ class Formularios(tk.Tk):
         ancho_menu = 10
         alto_menu = 1
         self.bnuevo = tk.Button(self.lateral_derecho)
-        self.bnuevo.config(text="Nou", bd=0, bg="#0739a4", font="Roboto", fg="white",
+        self.bnuevo.config(text="Nou", bd=0, bg="sky blue", font="Roboto", fg="white",
                            width=ancho_menu, height=alto_menu, state=tk.NORMAL, 
                            cursor="hand2")
         self.bnuevo.pack_configure(side="left", anchor=tk.NE )
@@ -95,10 +64,18 @@ class Formularios(tk.Tk):
         self.bcancelar.pack(padx=0, pady=110)
 
         self.encima_fuera(self.bnuevo)
-        self.on_enter(self, self.bnuevo)
-        self.on_leave(self, self.bnuevo)
+        
 
-    
+    def botones_buscar(self):
+        ancho_menu = 10
+        alto_menu = 1
+        self.cercar = tk.Button(self.lateral_derecho)
+        self.cercar.config(text="Cercar", bd=0, bg="sky blue", font="Roboto", fg="white",
+                           width=ancho_menu, height=alto_menu, state=tk.NORMAL, 
+                           cursor="hand2")
+        self.cercar.pack_configure(side="left", anchor=tk.NE )
+        self.cercar.pack(padx=10, pady=110)
+        self.encima_fuera(self.cercar)
 
 
 
