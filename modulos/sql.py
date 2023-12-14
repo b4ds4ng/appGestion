@@ -1,10 +1,16 @@
 import sqlite3
 
 
-class Datos (object):
+class Datos ():
 
     def __init__(self):
         super().__init__()
+
+    def connexio(self):
+        pass
+
+    def tancar_conn(self):
+        pass
 
 
     # introduction, update and remove data from Clients.
@@ -23,6 +29,6 @@ class Datos (object):
     def dcasos(self):
         pass
 
-    # querys 
+    # querys search
     def dbusqueda(self):
         pass

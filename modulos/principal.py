@@ -70,7 +70,6 @@ class Iniciador(tk.Tk):
     def on_leave(self, event, button):
         button.config(bg="sky blue", fg="white")
 
-    
     def clients(self):
 
        if (self.bclientes['state'] == tk.NORMAL):
@@ -85,9 +84,12 @@ class Iniciador(tk.Tk):
             self.lateral_derecho.pack_forget()   
             Formularios.frames(self)
             Formularios.etiqueta(self, text="Clients")
-            Formularios.entrys(self)
-            Formularios.entrys(self)
-            Formularios.botones_form(self)
+            Formularios.labels_entry(self, text="Nom", x=10, y=50)
+            Formularios.labels_entry(self, text="Cognom", x=200, y=50)
+            Formularios.entrys(self, x=50, y=50)
+            Formularios.entrys(self, x=270, y=50)
+            Formularios.botones_form(self, x=10, y=100) 
+            Formularios.listado(self)
         
         
     def productes(self):
@@ -104,8 +106,9 @@ class Iniciador(tk.Tk):
             self.lateral_derecho.pack_forget()   
             Formularios.frames(self)
             Formularios.etiqueta(self, text="Productes")
-            Formularios.entrys(self)
-            Formularios.botones_form(self)
+            Formularios.labels_entry(self, text="Nom", x=10, y=50)
+            Formularios.entrys(self, x=50, y=50)
+            Formularios.botones_form(self, x=10, y=80)
 
     def cassos(self):
         if (self.bcasos['state'] == tk.NORMAL):
@@ -120,8 +123,9 @@ class Iniciador(tk.Tk):
             self.lateral_derecho.pack_forget()
             Formularios.frames(self)
             Formularios.etiqueta(self, text="Cassos")
-            Formularios.entrys(self)
-            Formularios.botones_form(self)
+            Formularios.labels_entry(self, text="Nom", x=10, y=50)
+            Formularios.entrys(self, x=50, y=50)
+            Formularios.botones_form(self, x=10, y=80)
 
     def buscar(self):
         if (self.bbuscar['state'] == tk.NORMAL):
@@ -136,7 +140,8 @@ class Iniciador(tk.Tk):
             self.lateral_derecho.pack_forget()
             Formularios.frames(self)
             Formularios.etiqueta(self, text="Cercar")
-            Formularios.entrys(self)
+            Formularios.labels_entry(self, text="Nom", x=10, y=50)
+            Formularios.entrys(self, x=50, y=50)
             Formularios.botones_buscar(self)
 
     def salida(self):
