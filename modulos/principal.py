@@ -3,6 +3,7 @@ import sqlite3
 from .formularios import Formularios
 
 
+
 class Iniciador(tk.Tk):
 
     def __init__(self):
@@ -50,6 +51,7 @@ class Iniciador(tk.Tk):
                      ("Cassos", self.bcasos),
                      ("Cercar", self.bbuscar),
                      ("Sortir", self.bsortir)]
+
        for text, button in info_boton:
             self.config_boton(button, text, ancho_menu, alto_menu)
         
@@ -85,11 +87,19 @@ class Iniciador(tk.Tk):
             Formularios.frames(self)
             Formularios.etiqueta(self, text="Clients")
             Formularios.labels_entry(self, text="Nom", x=10, y=50)
-            Formularios.labels_entry(self, text="Cognom", x=200, y=50)
+            Formularios.labels_entry(self, text="Cognom", x=180, y=50)
+            Formularios.labels_entry(self, text="Email", x=390, y=50)
+            Formularios.labels_entry(self, text="Tel", x=10, y=80)
+            Formularios.labels_entry(self, text="Data alta", x=200, y=80)
+            Formularios.labels_entry(self, text="Tractament", x=400, y=80)
             Formularios.entrys(self, x=50, y=50)
-            Formularios.entrys(self, x=270, y=50)
-            Formularios.botones_form(self, x=10, y=100) 
-            Formularios.listado(self)
+            Formularios.entrys(self, x=250, y=50)
+            Formularios.entrys(self, x=440, y=50)
+            Formularios.entrys(self, x=50, y=80)
+            Formularios.entrys(self, x=270, y=80)
+            Formularios.entrys(self, x=490, y=80)
+            Formularios.botones_form(self, x=10, y=130)
+            Formularios.listado_clients(self)
         
         
     def productes(self):
@@ -106,9 +116,16 @@ class Iniciador(tk.Tk):
             self.lateral_derecho.pack_forget()   
             Formularios.frames(self)
             Formularios.etiqueta(self, text="Productes")
-            Formularios.labels_entry(self, text="Nom", x=10, y=50)
-            Formularios.entrys(self, x=50, y=50)
-            Formularios.botones_form(self, x=10, y=80)
+            Formularios.labels_entry(self, text="Categoria", x=10, y=50)
+            Formularios.labels_entry(self, text="Nom", x=230, y=50)
+            Formularios.labels_entry(self, text="Us", x=400, y=50)
+            Formularios.labels_entry(self, text="Descripció", x=10, y=80)
+            Formularios.entrys(self, x=90, y=50)
+            Formularios.entrys(self, x=270, y=50)
+            Formularios.entrys(self, x=430, y=50)
+            Formularios.entrys(self, x=90, y=80)
+            Formularios.botones_form(self, x=10, y=130)
+            Formularios.listado_productes(self)
 
     def cassos(self):
         if (self.bcasos['state'] == tk.NORMAL):
@@ -123,9 +140,11 @@ class Iniciador(tk.Tk):
             self.lateral_derecho.pack_forget()
             Formularios.frames(self)
             Formularios.etiqueta(self, text="Cassos")
-            Formularios.labels_entry(self, text="Nom", x=10, y=50)
-            Formularios.entrys(self, x=50, y=50)
-            Formularios.botones_form(self, x=10, y=80)
+            Formularios.labels_entry(self, text="Tractament", x=10, y=50)
+            Formularios.labels_entry(self, text="Descripció", x=230, y=50)
+            Formularios.entrys(self, x=100, y=50)
+            Formularios.entrys(self, x=320, y=50)
+            Formularios.botones_form(self, x=10, y=130)
 
     def buscar(self):
         if (self.bbuscar['state'] == tk.NORMAL):
