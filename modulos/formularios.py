@@ -17,11 +17,12 @@ class Formularios(tk.Tk):
         self.cercar = False
         self.listar = False
         self.listar_clients = False
+        self.listar_cassos = False
         self.listar_productes = False
 
     def frames(self):
 
-        self.lateral_derecho  = tk.Frame(self, relief=tk.SOLID, bg="white")
+        self.lateral_derecho = tk.Frame(self, relief=tk.SOLID, bg="white")
         self.lateral_derecho.pack(side="right", expand=tk.YES, fill=tk.BOTH)
 
     def etiqueta(self, text):
@@ -42,12 +43,12 @@ class Formularios(tk.Tk):
         for x, y in coordenadas:
             self.nombre.place(x=f"{x}", y=f"{y}")
 
-    def entrys(self, x, y):
+    def entrys(self, x, y, ancho):
 
-        coordenates = [(x, y)]
-        for x, y in coordenates:
+        coordenadas = [(x, y, ancho)]
+        for x, y, ancho in coordenadas:
             self.entrada = tk.Entry(self.lateral_derecho)
-            self.entrada.place(x=f"{x}", y=f"{y}")
+            self.entrada.place(x=f"{x}", y=f"{y}", height=f"{ancho}")
 
     def botones_form(self, x, y):
 
@@ -78,6 +79,10 @@ class Formularios(tk.Tk):
             x += 100
             self.bcancelar.place(x=f"{x}", y=f"{y}")
 
+        self.encima_fuera(self.bnuevo)
+        self.dentro_fuera_bguardar(self.bguardar)
+        self.dentro_fuera_bcancelar(self.bcancelar)
+
     def botones_buscar(self):
 
         ancho_menu = 10
@@ -92,36 +97,44 @@ class Formularios(tk.Tk):
 
     def listado_clients(self):
 
-        columns = ("Nom", "Cognom", "Email", "Telèfon", "Us", "Descripció")
+        columns = (["Nom", "Cognom", "Email",
+                    "Telèfon", "Us", "Tractament"])
         self.listar_clients = ttk.Treeview(self.lateral_derecho, columns=columns,
                                            show="headings")
+        for text in columns:
+            self.listar_clients.column(column=f"{text}", width=50)
         self.listar_clients.heading("Nom", text="Nom")
         self.listar_clients.heading("Cognom", text="Cognom")
         self.listar_clients.heading("Email", text="Email")
         self.listar_clients.heading("Telèfon", text="Telèfon")
         self.listar_clients.heading("Us", text="Us")
-        self.listar_clients.heading("Descripció", text="Descripció")
-        self.listar_clients.place(x=2, y=200)
+        self.listar_clients.heading("Tractament", text="Tractament")
+        self.listar_clients.place(x=2, y=200, width=989, height=400)
 
     def listado_cassos(self):
 
-        columns = ("Categoria", "Nom", "Us", "Descripció")
-        self.listar_cassos = ttk.Treeview(self.lateral_derecho, columns=columns, show="headings")
+        columns = ("Categoria", "Tractament", "Descripció")
+        self.listar_cassos = ttk.Treeview(self.lateral_derecho,
+                                          columns=columns, show="headings")
+        for text in columns:
+            self.listar_cassos.column(column=f"{text}", width=50)
         self.listar_cassos.heading("Categoria", text="Categoria")
-        self.listar_cassos.heading("Nom", text="Nom")
-        self.listar_cassos.heading("Us", text="Us")
+        self.listar_cassos.heading("Tractament", text="Tractament")
         self.listar_cassos.heading("Descripció", text="Descripció")
-        self.listar_cassos.place(x=2, y=200)
+        self.listar_cassos.place(x=2, y=200, width=989, height=400)
 
     def listado_productes(self):
 
         columns = ("Categoria", "Nom", "Us", "Descripció")
-        self.listar_productes = ttk.Treeview(self.lateral_derecho, columns=columns, show="headings")
+        self.listar_productes = ttk.Treeview(self.lateral_derecho, columns=columns,
+                                             show="headings")
+        for text in columns:
+            self.listar_productes.column(column=f"{text}", width=50)
         self.listar_productes.heading("Categoria", text="Categoria")
         self.listar_productes.heading("Nom", text="Nom")
         self.listar_productes.heading("Us", text="Us")
         self.listar_productes.heading("Descripció", text="Descripció")
-        self.listar_productes.place(x=2, y=200)
+        self.listar_productes.place(x=2, y=200, width=989, height=400)
 
     def config_boton(self, button, text, ancho_menu, alto_menu):
         self.config_boton(button, text, ancho_menu, alto_menu)

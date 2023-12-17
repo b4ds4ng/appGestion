@@ -72,6 +72,26 @@ class Iniciador(tk.Tk):
     def on_leave(self, event, button):
         button.config(bg="sky blue", fg="white")
 
+    def dentro_fuera_bguardar(self, button):
+        button.bind("<Enter>", lambda event: self.on_dentro(event, button))
+        button.bind("<Leave>", lambda event: self.on_fuera(event, button))
+
+    def on_dentro(self, event, button):
+        button.config(bg="green3", fg="green4")
+
+    def on_fuera(self, event, button):
+        button.config(bg="green", fg="white")
+
+    def dentro_fuera_bcancelar(self, button):
+        button.bind("<Enter>", lambda event: self.on_dentro_bc(event, button))
+        button.bind("<Leave>", lambda event: self.on_fuera_bc(event, button))
+
+    def on_dentro_bc(self, event, button):
+        button.config(bg="red3", fg="red4")
+
+    def on_fuera_bc(self, event, button):
+        button.config(bg="red", fg="white")
+
     def clients(self):
 
        if (self.bclientes['state'] == tk.NORMAL):
@@ -140,11 +160,14 @@ class Iniciador(tk.Tk):
             self.lateral_derecho.pack_forget()
             Formularios.frames(self)
             Formularios.etiqueta(self, text="Cassos")
-            Formularios.labels_entry(self, text="Tractament", x=10, y=50)
-            Formularios.labels_entry(self, text="Descripció", x=230, y=50)
-            Formularios.entrys(self, x=100, y=50)
-            Formularios.entrys(self, x=320, y=50)
+            Formularios.labels_entry(self, text="Categoria", x=10, y=50)
+            Formularios.labels_entry(self, text="Tractament", x=230, y=50)
+            Formularios.labels_entry(self, text="Descripció", x=460, y=50)
+            Formularios.entrys(self, x=100, y=50, ancho=20)
+            Formularios.entrys(self, x=320, y=50, ancho=20)
+            Formularios.entrys(self, x=550, y=50, ancho=120)
             Formularios.botones_form(self, x=10, y=130)
+            Formularios.listado_cassos(self)
 
     def buscar(self):
         if (self.bbuscar['state'] == tk.NORMAL):
