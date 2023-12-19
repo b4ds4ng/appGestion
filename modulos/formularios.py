@@ -8,8 +8,13 @@ class Formularios(tk.Tk):
 
         super().__init__()
         self.lateral_derecho = False
-        self.nombre = False
-        self.entrada = False
+        self.nombre = None
+        self.cognom = None
+        self.email = None
+        self.tel = None
+        self.data = None
+        self.trac = None
+        self.entrada = None
         self.bnuevo = False
         self.bguardar = False
         self.bcancelar = False
@@ -19,6 +24,7 @@ class Formularios(tk.Tk):
         self.listar_clients = False
         self.listar_cassos = False
         self.listar_productes = False
+        self.datos = False
 
     def frames(self):
 

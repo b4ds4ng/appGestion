@@ -11,8 +11,6 @@ class Iniciador(tk.Tk):
         self.ventana_principal()
         self.paneles()
         self.botones()
-        
-        
 
     def ventana_principal(self):
         self.title('Gestió')
@@ -112,12 +110,12 @@ class Iniciador(tk.Tk):
             Formularios.labels_entry(self, text="Tel", x=10, y=80)
             Formularios.labels_entry(self, text="Data alta", x=200, y=80)
             Formularios.labels_entry(self, text="Tractament", x=400, y=80)
-            Formularios.entrys(self, x=50, y=50)
-            Formularios.entrys(self, x=250, y=50)
-            Formularios.entrys(self, x=440, y=50)
-            Formularios.entrys(self, x=50, y=80)
-            Formularios.entrys(self, x=270, y=80)
-            Formularios.entrys(self, x=490, y=80)
+            Formularios.entrys(self, x=50, y=50, ancho=20)
+            Formularios.entrys(self, x=250, y=50, ancho=20)
+            Formularios.entrys(self, x=440, y=50, ancho=20)
+            Formularios.entrys(self, x=50, y=80, ancho=20)
+            Formularios.entrys(self, x=270, y=80, ancho=20)
+            Formularios.entrys(self, x=490, y=80, ancho=20)
             Formularios.botones_form(self, x=10, y=130)
             Formularios.listado_clients(self)
         
@@ -140,10 +138,10 @@ class Iniciador(tk.Tk):
             Formularios.labels_entry(self, text="Nom", x=230, y=50)
             Formularios.labels_entry(self, text="Us", x=400, y=50)
             Formularios.labels_entry(self, text="Descripció", x=10, y=80)
-            Formularios.entrys(self, x=90, y=50)
-            Formularios.entrys(self, x=270, y=50)
-            Formularios.entrys(self, x=430, y=50)
-            Formularios.entrys(self, x=90, y=80)
+            Formularios.entrys(self, x=90, y=50, ancho=20)
+            Formularios.entrys(self, x=270, y=50, ancho=20)
+            Formularios.entrys(self, x=430, y=50, ancho=20)
+            Formularios.entrys(self, x=90, y=80, ancho=20)
             Formularios.botones_form(self, x=10, y=130)
             Formularios.listado_productes(self)
 
@@ -183,7 +181,7 @@ class Iniciador(tk.Tk):
             Formularios.frames(self)
             Formularios.etiqueta(self, text="Cercar")
             Formularios.labels_entry(self, text="Nom", x=10, y=50)
-            Formularios.entrys(self, x=50, y=50)
+            Formularios.entrys(self, x=50, y=50, ancho=20)
             Formularios.botones_buscar(self)
 
     def salida(self):
