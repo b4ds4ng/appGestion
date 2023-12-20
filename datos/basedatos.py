@@ -1,10 +1,7 @@
-from tkinter import messagebox
-from appGestion.datos.sql import Conexion
-
 
 class Clientes:
 
-    def __init__(self, nom, cognom, email, tel, data, trac):
+    def __init__(self, nom=None, cognom=None, email=None, tel=None, data=None, trac=None):
         super().__init__()
         self.id = None
         self.nombre = nom
@@ -14,30 +11,6 @@ class Clientes:
         self.data = data
         self.trac = trac
 
-    def __str__(self):
-        return f"gclientes[{self.nombre}, {self.cognom}, {self.email}, {self.tel}, {self.data}, {self.trac}]"
-
-    def gclientes(self, nom, cognom, email, tel, data, trac):
-        conexion = Conexion()
-        conexion.cursor()
-        conexion.tancar_conn()
-        self.nombre = nom
-        self.cognom = cognom
-        self.email = email
-        self.tel = tel
-        self.data = data
-        self.trac = trac
-
-        sql = f""" INSERT INTO  clientes (nom, cognom, email, tel, data, trac
-               VALUES ('{self.nombre}', '{self.cognom}', '{self.email}',
-                '{self.tel}', '{self.data}', '{self.trac}"""
-
-        try:
-            conexion.cursor.execute(sql)
-            conexion.tancar_conn()
-        except conexion:
-            messagebox.showwarning("Error de connexió", "Torna-ho a provar")
-
     def rclientes(self):
 
         pass
@@ -46,7 +19,6 @@ class Clientes:
 class Productos:
 
     def __init__(self):
-
         super().__init__()
 
     def gproductos(self):
@@ -57,6 +29,9 @@ class Productos:
 
 
 class Cassos:
+
+    def __init__(self):
+        super().__init__()
 
     def gcasos(self):
         pass

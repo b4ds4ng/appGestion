@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import ttk
 import sqlite3
 from .formularios import Formularios
 
@@ -137,11 +138,11 @@ class Iniciador(tk.Tk):
             Formularios.labels_entry(self, text="Categoria", x=10, y=50)
             Formularios.labels_entry(self, text="Nom", x=230, y=50)
             Formularios.labels_entry(self, text="Us", x=400, y=50)
-            Formularios.labels_entry(self, text="Descripció", x=10, y=80)
+            Formularios.labels_entry(self, text="Descripció", x=570, y=50)
             Formularios.entrys(self, x=90, y=50, ancho=20)
             Formularios.entrys(self, x=270, y=50, ancho=20)
             Formularios.entrys(self, x=430, y=50, ancho=20)
-            Formularios.entrys(self, x=90, y=80, ancho=20)
+            Formularios.entrys(self, x=660, y=50, ancho=100)
             Formularios.botones_form(self, x=10, y=130)
             Formularios.listado_productes(self)
 
