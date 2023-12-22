@@ -1,30 +1,35 @@
+from appGestion.datos.conexion import Conexion
+
 
 class Clientes:
 
-    def __init__(self, nom=None, cognom=None, email=None, tel=None, data=None, trac=None):
+    def __init__(self):
         super().__init__()
-        self.id = None
-        self.nombre = nom
-        self.cognom = cognom
-        self.email = email
-        self.tel = tel
-        self.data = data
-        self.trac = trac
+        self.ingresado = Conexion()
 
-    def rclientes(self):
+    def rclientes(self, *args):
 
+        for idx, (datos) in enumerate(args):
+            datos.get = f"{datos}"
+            self.ingresado.alta(datos)
+            datos.set(datos)
+            datos.execute(datos)
+            Conexion()
+
+    def bclientes(self, *args):
         pass
 
 
 class Productos:
 
     def __init__(self):
+
         super().__init__()
 
     def gproductos(self):
         pass
 
-    def rproductos(self):
+    def bproductos(self):
         pass
 
 
@@ -36,7 +41,7 @@ class Cassos:
     def gcasos(self):
         pass
 
-    def rcasos(self):
+    def bcasos(self):
         pass
 
 

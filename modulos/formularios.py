@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+from appGestion.datos.basedatos import Clientes
 
 
 class Formularios(tk.Tk):
@@ -49,21 +50,25 @@ class Formularios(tk.Tk):
         for x, y in coordenadas:
             self.nombre.place(x=f"{x}", y=f"{y}")
 
-    def entrys(self, x, y, ancho):
+    def entrys(self, x, y, ancho, *args):
 
-        coordenadas = [(x, y, ancho)]
-        for x, y, ancho in coordenadas:
-            self.entrada = tk.Entry(self.lateral_derecho)
+        coordenadas = [(x, y, ancho, args)]
+        for idx, (x, y, ancho, args) in enumerate(coordenadas):
+            args = tk.StringVar()
+            self.entrada = tk.Entry(self.lateral_derecho, textvariable=args)
             self.entrada.place(x=f"{x}", y=f"{y}", height=f"{ancho}")
+            self.entrada.get = f"{self, args}"
+
 
     def botones_form(self, x, y):
 
         ancho_menu = 8
         alto_menu = 1
         coordenadas = [(x, y)]
+        cliente = Clientes()
 
         self.bnuevo = tk.Button(self.lateral_derecho, cursor="hand2")
-        self.bguardar = tk.Button(self.lateral_derecho, cursor="hand2")
+        self.bguardar = tk.Button(self.lateral_derecho, command=cliente.rclientes, cursor="hand2")
         self.bcancelar = tk.Button(self.lateral_derecho, cursor="hand2")
 
         boton_form = [("Nou", self.bnuevo),
