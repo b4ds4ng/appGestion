@@ -5,16 +5,15 @@ from appGestion.datos.basedatos import Clientes
 
 class Formularios(tk.Tk):
 
-    def __init__(self):
+    def __init__(self, lateral_derecho, nom=None, cognom=None, email=None, tel=None, data=None, trac=None):
 
         super().__init__()
-        self.lateral_derecho = False
-        self.nombre = None
-        self.cognom = None
-        self.email = None
-        self.tel = None
-        self.data = None
-        self.trac = None
+        self.nombre = nom
+        self.cognom = cognom
+        self.email = email
+        self.tel = tel
+        self.data = data
+        self.trac = trac
         self.entrada = None
         self.bnuevo = False
         self.bguardar = False
@@ -25,7 +24,9 @@ class Formularios(tk.Tk):
         self.listar_clients = False
         self.listar_cassos = False
         self.listar_productes = False
-        self.datos = False
+        self.lateral_derecho = lateral_derecho
+        self.entradas = None
+        self.datos = None
 
     def frames(self):
 
@@ -52,13 +53,13 @@ class Formularios(tk.Tk):
 
     def entrys(self, x, y, ancho, *args):
 
+        self.entradas = []
         coordenadas = [(x, y, ancho, args)]
         for idx, (x, y, ancho, args) in enumerate(coordenadas):
-            args = tk.StringVar()
-            self.entrada = tk.Entry(self.lateral_derecho, textvariable=args)
-            self.entrada.place(x=f"{x}", y=f"{y}", height=f"{ancho}")
-            self.entrada.get = f"{self, args}"
-
+            var = tk.StringVar()
+            entrada = tk.Entry(self.lateral_derecho, textvariable=var)
+            entrada.place(x=f"{x}", y=f"{y}", height=f"{ancho}")
+            self.entradas.append((f"{entrada}", var.get()))
 
     def botones_form(self, x, y):
 
@@ -68,7 +69,7 @@ class Formularios(tk.Tk):
         cliente = Clientes()
 
         self.bnuevo = tk.Button(self.lateral_derecho, cursor="hand2")
-        self.bguardar = tk.Button(self.lateral_derecho, command=cliente.rclientes, cursor="hand2")
+        self.bguardar = tk.Button(self.lateral_derecho, command=cliente.rclientes(), cursor="hand2")
         self.bcancelar = tk.Button(self.lateral_derecho, cursor="hand2")
 
         boton_form = [("Nou", self.bnuevo),
@@ -89,7 +90,6 @@ class Formularios(tk.Tk):
             self.bguardar.place(x=f"{x}", y=f"{y}")
             x += 100
             self.bcancelar.place(x=f"{x}", y=f"{y}")
-
         self.encima_fuera(self.bnuevo)
         self.dentro_fuera_bguardar(self.bguardar)
         self.dentro_fuera_bcancelar(self.bcancelar)
@@ -108,13 +108,14 @@ class Formularios(tk.Tk):
 
     def listado_clients(self):
 
-        columns = (["Nom", "Cognom", "Email",
+        columns = (["Id", "Nom", "Cognom", "Email",
                     "Telèfon", "Us", "Tractament"])
         self.listar_clients = ttk.Treeview(self.lateral_derecho, columns=columns,
                                            show="headings")
         for text in columns:
             self.listar_clients.column(column=f"{text}", width=50)
-        self.listar_clients.heading("Nom", text="Nom")
+        self.listar_clients.heading("Id", text="Id")
+        self.listar_clients.heading("Nom", text="Nom") 
         self.listar_clients.heading("Cognom", text="Cognom")
         self.listar_clients.heading("Email", text="Email")
         self.listar_clients.heading("Telèfon", text="Telèfon")

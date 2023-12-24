@@ -3,18 +3,22 @@ from appGestion.datos.conexion import Conexion
 
 class Clientes:
 
-    def __init__(self):
+    def __init__(self, nom=None, cognom=None, email=None, tel=None, data=None, trac=None):
         super().__init__()
         self.ingresado = Conexion()
+        self.nom = nom
+        self.cognom = cognom
+        self.email = email
+        self.tel = tel
+        self.data = data
+        self.trac = trac
+        self.entradas = None
 
     def rclientes(self, *args):
 
-        for idx, (datos) in enumerate(args):
-            datos.get = f"{datos}"
-            self.ingresado.alta(datos)
-            datos.set(datos)
-            datos.execute(datos)
-            Conexion()
+        for dato in args:
+            self.entradas.append((dato.get()))
+            print(f"datos recibidos: {dato.get}")
 
     def bclientes(self, *args):
         pass
