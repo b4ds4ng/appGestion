@@ -1,9 +1,9 @@
 import tkinter as tk
 from tkinter import ttk
-from appGestion.datos.basedatos import Clientes
+from appGestion.datos.conexion import Conexion
 
 
-class Formularios(tk.Tk):
+class Formularios(tk.Tk, object):
 
     def __init__(self, lateral_derecho, nom=None, cognom=None, email=None, tel=None, data=None, trac=None):
 
@@ -25,8 +25,9 @@ class Formularios(tk.Tk):
         self.listar_cassos = False
         self.listar_productes = False
         self.lateral_derecho = lateral_derecho
-        self.entradas = None
-        self.datos = None
+        #self.entradas = []
+        self.entradas = (self.nombre.get(), self.cognom.get(), self.email.get(), self.tel.get(),
+                     self.data.get(), self.trac())
 
     def frames(self):
 
@@ -59,17 +60,18 @@ class Formularios(tk.Tk):
             var = tk.StringVar()
             entrada = tk.Entry(self.lateral_derecho, textvariable=var)
             entrada.place(x=f"{x}", y=f"{y}", height=f"{ancho}")
-            self.entradas.append((f"{entrada}", var.get()))
+            self.entradas.append((f"{entrada}", f"{var}"))
 
     def botones_form(self, x, y):
 
         ancho_menu = 8
         alto_menu = 1
         coordenadas = [(x, y)]
-        cliente = Clientes()
+        conexion = Conexion()
 
         self.bnuevo = tk.Button(self.lateral_derecho, cursor="hand2")
-        self.bguardar = tk.Button(self.lateral_derecho, command=cliente.rclientes(), cursor="hand2")
+        self.bguardar = tk.Button(self.lateral_derecho, command=conexion.alta_cliente(self.entradas),
+                                  cursor="hand2")
         self.bcancelar = tk.Button(self.lateral_derecho, cursor="hand2")
 
         boton_form = [("Nou", self.bnuevo),

@@ -15,10 +15,7 @@ class Clientes:
         self.entradas = None
 
     def rclientes(self, *args):
-
-        for dato in args:
-            self.entradas.append((dato.get()))
-            print(f"datos recibidos: {dato.get}")
+        pass
 
     def bclientes(self, *args):
         pass

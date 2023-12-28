@@ -120,7 +120,6 @@ class Iniciador(tk.Tk):
             Formularios.botones_form(self, x=10, y=130)
             Formularios.listado_clients(self)
         
-        
     def productes(self):
 
         if (self.bproductos['state'] == tk.NORMAL):

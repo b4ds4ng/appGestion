@@ -13,6 +13,8 @@ class Conexion:
         self.data = data
         self.trac = trac
         self.conexion()
+        self.entradas = []
+
 
     def conexion(self):
 
@@ -20,11 +22,16 @@ class Conexion:
         conec = sq.connect(base_datos)
         return conec
 
-    def alta(self, *args):
+    def alta_cliente(self, *args):
+        self.entradas = []
+        for dato in args:
+            self.entradas = [dato]
+            print(dato)
 
-        conexion = self.conexion()
-        cursor = conexion.cursor()
-        sql = "INSERT INTO clients (nom, cognom, email, tel, data, tract) values (?,?,?,?,?,?)"
-        cursor.execute(sql, args)
-        conexion.commit()
-        conexion.close()
+
+        #conexion = self.conexion()
+        #cursor = conexion.cursor()
+        #sql = "INSERT INTO clients (nom, cognom, email, tel, data, tract) values (?,?,?,?,?,?)"
+        #cursor.execute(sql, args)
+        #conexion.commit()
+        #conexion.close()
