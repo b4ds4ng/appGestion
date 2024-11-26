@@ -5,16 +5,13 @@ class Conexion:
 
     def __init__(self, nom=None, cognom=None, email=None, tel=None, data=None, trac=None):
         super().__init__()
-        self.conexion()
         self.nom = nom
         self.cognom = cognom
         self.email = email
         self.tel = tel
         self.data = data
         self.trac = trac
-        self.conexion()
         self.entradas = []
-
 
     def conexion(self):
 
@@ -22,16 +19,14 @@ class Conexion:
         conec = sq.connect(base_datos)
         return conec
 
-    def alta_cliente(self, *args):
-        self.entradas = []
+    def alta_cliente(self, *args: str):
         for dato in args:
-            self.entradas = [dato]
-            print(dato)
+            self.entradas.append(dato)
+            lista = ''.join(str(x) for x in self.entradas)
+            print(lista)
 
-
-        #conexion = self.conexion()
-        #cursor = conexion.cursor()
-        #sql = "INSERT INTO clients (nom, cognom, email, tel, data, tract) values (?,?,?,?,?,?)"
-        #cursor.execute(sql, args)
-        #conexion.commit()
-        #conexion.close()
+    def __str__(self) -> str:
+        str_con_el_resultado = 'Datos: '
+        for dato in self.entradas:
+            str_con_el_resultado += "\n  * {}".format(dato)
+        return str_con_el_resultado

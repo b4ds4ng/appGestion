@@ -36,8 +36,8 @@ class Iniciador(tk.Tk):
 
     def botones(self):
 
-       ancho_menu = 20
-       alto_menu = 2
+       ancho_boton = 20
+       alto_boton = 2
         
        self.bclientes = tk.Button(self.lateral_izquierdo, command=self.clients, cursor="hand2")
        self.bproductos = tk.Button(self.lateral_izquierdo, command=self.productes, cursor="hand2")
@@ -52,10 +52,10 @@ class Iniciador(tk.Tk):
                      ("Sortir", self.bsortir)]
 
        for text, button in info_boton:
-            self.config_boton(button, text, ancho_menu, alto_menu)
+            self.config_boton(button, text, ancho_boton, alto_boton)
         
     
-    def config_boton(self, button, text, ancho_menu, alto_menu):
+    def config_boton(self, button, text, ancho_boton, alto_boton):
         button.config(text=f"{text}", bd=0, bg="sky blue", font="Roboto", fg="white",
                       width=ancho_menu, height=alto_menu)
         button.pack()

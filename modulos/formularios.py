@@ -25,9 +25,7 @@ class Formularios(tk.Tk, object):
         self.listar_cassos = False
         self.listar_productes = False
         self.lateral_derecho = lateral_derecho
-        #self.entradas = []
-        self.entradas = (self.nombre.get(), self.cognom.get(), self.email.get(), self.tel.get(),
-                     self.data.get(), self.trac())
+        self.entradas = []
 
     def frames(self):
 
@@ -52,11 +50,11 @@ class Formularios(tk.Tk, object):
         for x, y in coordenadas:
             self.nombre.place(x=f"{x}", y=f"{y}")
 
-    def entrys(self, x, y, ancho, *args):
+    def entrys(self, x, y, ancho):
 
         self.entradas = []
-        coordenadas = [(x, y, ancho, args)]
-        for idx, (x, y, ancho, args) in enumerate(coordenadas):
+        coordenadas = [(x, y, ancho)]
+        for idx, (x, y, ancho) in enumerate(coordenadas):
             var = tk.StringVar()
             entrada = tk.Entry(self.lateral_derecho, textvariable=var)
             entrada.place(x=f"{x}", y=f"{y}", height=f"{ancho}")
@@ -70,7 +68,7 @@ class Formularios(tk.Tk, object):
         conexion = Conexion()
 
         self.bnuevo = tk.Button(self.lateral_derecho, cursor="hand2")
-        self.bguardar = tk.Button(self.lateral_derecho, command=conexion.alta_cliente(self.entradas),
+        self.bguardar = tk.Button(self.lateral_derecho, command=conexion.alta_cliente,
                                   cursor="hand2")
         self.bcancelar = tk.Button(self.lateral_derecho, cursor="hand2")
 
