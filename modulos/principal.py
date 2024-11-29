@@ -57,7 +57,7 @@ class Iniciador(tk.Tk):
     
     def config_boton(self, button, text, ancho_boton, alto_boton):
         button.config(text=f"{text}", bd=0, bg="sky blue", font="Roboto", fg="white",
-                      width=ancho_menu, height=alto_menu)
+                      width=ancho_boton, height=alto_boton)
         button.pack()
         self.encima_fuera(button)
 

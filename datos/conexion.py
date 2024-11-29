@@ -12,21 +12,19 @@ class Conexion:
         self.data = data
         self.trac = trac
         self.entradas = []
-
-    def conexion(self):
+    @staticmethod
+    def conexion():
 
         base_datos = "baseDatos/gestion.db"
         conec = sq.connect(base_datos)
         return conec
 
-    def alta_cliente(self, *args: str):
-        for dato in args:
-            self.entradas.append(dato)
-            lista = ''.join(str(x) for x in self.entradas)
-            print(lista)
+    def alta_cliente(self, nom, cognom, email, tel, data, trac):
+        cnx = self.conexion()
+        cursor= cnx.cursor()
+        query = "INSERT INTO clients ( nom, cognom, email, tel, data, trac) VALUES ( %s, %s, %s, %s, %s, %s)"
+        cursor.execute(query,( nom, cognom, email, tel, data, trac))
+        cnx.commit()
+        cursor.close()
+        cnx.close()
 
-    def __str__(self) -> str:
-        str_con_el_resultado = 'Datos: '
-        for dato in self.entradas:
-            str_con_el_resultado += "\n  * {}".format(dato)
-        return str_con_el_resultado

@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-from appGestion.datos.conexion import Conexion
+#from appGestion.datos.conexion import Conexion
 
 
 class Formularios(tk.Tk, object):
@@ -65,11 +65,10 @@ class Formularios(tk.Tk, object):
         ancho_menu = 8
         alto_menu = 1
         coordenadas = [(x, y)]
-        conexion = Conexion()
+        #conexion = Conexion()
 
         self.bnuevo = tk.Button(self.lateral_derecho, cursor="hand2")
-        self.bguardar = tk.Button(self.lateral_derecho, command=conexion.alta_cliente,
-                                  cursor="hand2")
+        self.bguardar = tk.Button(self.lateral_derecho,cursor="hand2")
         self.bcancelar = tk.Button(self.lateral_derecho, cursor="hand2")
 
         boton_form = [("Nou", self.bnuevo),
