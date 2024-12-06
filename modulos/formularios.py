@@ -1,33 +1,36 @@
 import tkinter as tk
 from tkinter import ttk
+
 #from appGestion.datos.conexion import Conexion
 
 
-class Formularios(tk.Tk, object):
 
-    def __init__(self, lateral_derecho, nom=None, cognom=None, email=None, tel=None, data=None, trac=None):
+class Formularios(tk.Tk):
+
+
+
+    def __init__(self, lateral_derecho):
 
         super().__init__()
-        self.nombre = nom
-        self.cognom = cognom
-        self.email = email
-        self.tel = tel
-        self.data = data
-        self.trac = trac
-        self.entrada = None
+
+
+        self.nombre= None
+        self.entrada = []
         self.bnuevo = False
         self.bguardar = False
         self.bcancelar = False
         self.lateral_derecho_label = False
+        self.entradas = []
         self.cercar = False
         self.listar = False
         self.listar_clients = False
         self.listar_cassos = False
         self.listar_productes = False
+        self.lista_busqueda = False
         self.lateral_derecho = lateral_derecho
-        self.entradas = []
 
-    def frames(self):
+
+    def lateral_derecho(self):
 
         self.lateral_derecho = tk.Frame(self, relief=tk.SOLID, bg="white")
         self.lateral_derecho.pack(side="right", expand=tk.YES, fill=tk.BOTH)
@@ -41,57 +44,22 @@ class Formularios(tk.Tk, object):
                                                   bg="white", fg="blue")
             self.lateral_derecho_label.pack(expand=tk.NO)
 
-    def labels_entry(self, text, x, y):
-        info_entry = [text]
-        coordenadas = [(x, y)]
-        for text in info_entry:
-            self.nombre = tk.Label(self.lateral_derecho, text=f"{text}", bg="white",
-                                   font=("Roboto", 11, "bold"))
-        for x, y in coordenadas:
-            self.nombre.place(x=f"{x}", y=f"{y}")
+    def leer_entradas(self):
+        #Fer que aquesta funció discrimini en funció de les dades que li arriben, per a
+        #després enviar les dades a la funció corresponent de la classe Conexión.
 
-    def entrys(self, x, y, ancho):
+        print("Leyendo entradas...")
+        valores = []
+        for entrada in self.entradas:
+            valor = entrada.get()
+            valores.append(valor)
+            print(valor)
+        return valores
 
-        self.entradas = []
-        coordenadas = [(x, y, ancho)]
-        for idx, (x, y, ancho) in enumerate(coordenadas):
-            var = tk.StringVar()
-            entrada = tk.Entry(self.lateral_derecho, textvariable=var)
-            entrada.place(x=f"{x}", y=f"{y}", height=f"{ancho}")
-            self.entradas.append((f"{entrada}", f"{var}"))
+    def prova_boton(self):
+        print("botó cancel·lar premut" )
+        # Aquí ficar la funció que neteja el formulari
 
-    def botones_form(self, x, y):
-
-        ancho_menu = 8
-        alto_menu = 1
-        coordenadas = [(x, y)]
-        #conexion = Conexion()
-
-        self.bnuevo = tk.Button(self.lateral_derecho, cursor="hand2")
-        self.bguardar = tk.Button(self.lateral_derecho,cursor="hand2")
-        self.bcancelar = tk.Button(self.lateral_derecho, cursor="hand2")
-
-        boton_form = [("Nou", self.bnuevo),
-                      ("Guardar", self.bguardar),
-                      ("Cancel·lar", self.bcancelar)]
-        color = ["sky blue", "green", "red"]
-        for idx, (text, button) in enumerate(boton_form):
-            self.config_boton(button, text, ancho_menu, alto_menu)
-
-            color_indice = idx % len(color)
-            button.config(text=f"{text}", bd=0, bg=f"{color[color_indice]}",
-                          font="Roboto", fg="white",
-                          width=ancho_menu, height=alto_menu)
-
-        for idx, (x, y) in enumerate(coordenadas):
-            self.bnuevo.place(x=f"{x}", y=f"{y}")
-            x += 100
-            self.bguardar.place(x=f"{x}", y=f"{y}")
-            x += 100
-            self.bcancelar.place(x=f"{x}", y=f"{y}")
-        self.encima_fuera(self.bnuevo)
-        self.dentro_fuera_bguardar(self.bguardar)
-        self.dentro_fuera_bcancelar(self.bcancelar)
 
     def botones_buscar(self):
 
@@ -147,5 +115,7 @@ class Formularios(tk.Tk, object):
         self.listar_productes.heading("Descripció", text="Descripció")
         self.listar_productes.place(x=2, y=200, width=989, height=400)
 
-    def config_boton(self, button, text, ancho_menu, alto_menu):
-        self.config_boton(button, text, ancho_menu, alto_menu)
+
+    def lista_busqueda(self):
+        self.lista_busqueda = ttk.Treeview(self.lateral_derecho, show="headings")
+        self.lista_busqueda.place(x=2, y=200, width=989, height=400)
