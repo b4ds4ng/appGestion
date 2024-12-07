@@ -74,7 +74,7 @@ class Iniciador(tk.Tk, object):
        info_boton = [("Clients", self.bclientes),
                      ("Productes",self.bproductos),
                      ("Cassos", self.bcasos),
-                     ("Cercar", self.bbuscar),
+                     ("Consultes", self.bbuscar),
                      ("Sortir", self.bsortir)]
 
        for text, button in info_boton:
@@ -249,10 +249,10 @@ class Iniciador(tk.Tk, object):
 
                 self.lateral_derecho.pack_forget()
                 Formularios.lateral_derecho(self)
-                Formularios.etiqueta(self, text="Cercador")
-                self.labels_entry(text="Nom", x=10, y=50)
-                self.entrys(x=50, y=50, ancho=20)
-                Formularios.botones_buscar(self)
+                Formularios.etiqueta(self, text="Consultes")
+                #self.labels_entry(text="Consulta", x=10, y=50)
+                #self.entrys(x=80, y=50, ancho=20)
+                #Formularios.botones_buscar(self)
                 Formularios.lista_busqueda(self)
 
     def salida(self):

@@ -1,7 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-
-#from appGestion.datos.conexion import Conexion
+from appGestion.datos.conexion import Conexion
 
 
 
@@ -41,24 +40,25 @@ class Formularios(tk.Tk):
         for text in info_label:
             self.lateral_derecho_label = tk.Label(self.lateral_derecho, text=f"{text}",
                                                   font=("Roboto", 15, "bold"),
-                                                  bg="white", fg="blue")
+                                                  bg="white", fg="sky blue")
             self.lateral_derecho_label.pack(expand=tk.NO)
 
     def leer_entradas(self):
         #Fer que aquesta funció discrimini en funció de les dades que li arriben, per a
         #després enviar les dades a la funció corresponent de la classe Conexión.
 
-        print("Leyendo entradas...")
+
         valores = []
         for entrada in self.entradas:
             valor = entrada.get()
             valores.append(valor)
-            print(valor)
-        return valores
+            Conexion.alta_cliente(valor)
+            #print(valor)
+        #return valores
 
     def prova_boton(self):
         print("botó cancel·lar premut" )
-        # Aquí ficar la funció que neteja el formulari
+        # Aquí ficar la funció que neteja dels formularis.
 
 
     def botones_buscar(self):
@@ -117,5 +117,6 @@ class Formularios(tk.Tk):
 
 
     def lista_busqueda(self):
+        """Dins del treeview col·locar tota la lògica d'interacció amb la IA"""
         self.lista_busqueda = ttk.Treeview(self.lateral_derecho, show="headings")
-        self.lista_busqueda.place(x=2, y=200, width=989, height=400)
+        self.lista_busqueda.place(x=2, y=30, width=989, height=615)

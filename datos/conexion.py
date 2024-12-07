@@ -16,15 +16,18 @@ class Conexion:
         return conec
 
     def alta_cliente(self, *entradas):
-        print("llega algo")
-        print("datos: ", entradas)
+
         datos = []
-        cnx = self.conexion()
+        cnx = Conexion.conexion()
+
+        #for entrada in entradas:
         cursor= cnx.cursor()
-        query = "INSERT INTO clients ( nom, cognom, email, tel, data, trac) VALUES ( %s, %s, %s, %s, %s, %s)"
+        print(datos, entradas)
+        """query = "INSERT INTO clients ( nom, cognom, email, tel, data,tract) VALUES ( ?, ?, ?, ?, ?,?)"
         cursor.execute(query, datos)
+            #print(entrada)
         cnx.commit()
-        cursor.close()
+        cursor.close()"""
         cnx.close()
 
     def alta_producte(self):
