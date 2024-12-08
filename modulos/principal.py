@@ -98,7 +98,7 @@ class Iniciador(tk.Tk, object):
                                   cursor="hand2")
         self.bguardar = tk.Button(self.lateral_derecho, command=lambda: Formularios.leer_entradas(self),
                                   cursor="hand2")
-        self.bcancelar = tk.Button(self.lateral_derecho, command=lambda: Formularios.prova_boton(self),
+        self.bcancelar = tk.Button(self.lateral_derecho, command=lambda: Formularios.prova_boton(),
                                   cursor="hand2")
         boton_form = [("Nou", self.bnuevo),
                       ("Guardar", self.bguardar),
