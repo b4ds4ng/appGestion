@@ -1,9 +1,11 @@
 import sqlite3 as sq
 
 
+
+
 class Conexion:
 
-    def __init__(self, *args):
+    def __init__(self):
         super().__init__()
 
         self.entradas = []
@@ -15,19 +17,16 @@ class Conexion:
         conec = sq.connect(base_datos)
         return conec
 
-    def alta_cliente(self, *entradas):
 
-        datos = []
+    @staticmethod
+    def alta_cliente(entradas):
+
         cnx = Conexion.conexion()
-
-        #for entrada in entradas:
-        cursor= cnx.cursor()
-        print(datos, entradas)
-        """query = "INSERT INTO clients ( nom, cognom, email, tel, data,tract) VALUES ( ?, ?, ?, ?, ?,?)"
-        cursor.execute(query, datos)
-            #print(entrada)
+        cursor = cnx.cursor()
+        query = "INSERT INTO clients ( nom, cognom, email, tel, data,tract) VALUES ( ?, ?, ?, ?, ?,?)"
+        cursor.execute(query, entradas)
         cnx.commit()
-        cursor.close()"""
+        cursor.close()
         cnx.close()
 
     def alta_producte(self):

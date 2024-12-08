@@ -52,13 +52,15 @@ class Formularios(tk.Tk):
         for entrada in self.entradas:
             valor = entrada.get()
             valores.append(valor)
-            Conexion.alta_cliente(valor)
-            #print(valor)
-        #return valores
+        Conexion.alta_cliente(valores)
 
-    def prova_boton(self):
+
+        #return valores
+    @staticmethod
+    def prova_boton():
         print("botó cancel·lar premut" )
-        # Aquí ficar la funció que neteja dels formularis.
+
+        # Aquí ficar la funció que neteja dels formularis. Reanomenar la funció.
 
 
     def botones_buscar(self):
