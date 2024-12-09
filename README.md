@@ -1,8 +1,6 @@
 # appGestion
-Aplicacions d'escriptori amb Python
+Aplicacions d'escriptori amb Python,sqlite·, opencv i ollama.
 
-Creació d'una aplicació d'escriptori feta amb Tkinter i gestionada amb SQLite. 
-L'inici de l'aplicació és mitjançant reconeixement facial amb openCV.
-
-Consta d'una base de dades amb cuatre taules; clients, productes, cassos i historial dels clients.
+Consta d'una base de dades amb tres taules; clients, productes, cassos.
 L'entrada a l'aplicació haurà de contemplar que l'usuari sigui realment una persona.
+Les consultes es faran mitjançant ollama sobre les dades de la base de dades pròpia. 
