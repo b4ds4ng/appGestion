@@ -20,14 +20,37 @@ class Conexion:
 
     @staticmethod
     def alta_cliente(entradas):
+        campos = len(entradas)
+        if campos == 6:
+            cnx = Conexion.conexion()
+            cursor = cnx.cursor()
+            query = "INSERT INTO clients ( nom, cognom, email, tel, data,tract) VALUES ( ?, ?, ?, ?, ?,?)"
+            cursor.execute(query, entradas)
+            cnx.commit()
+            cursor.close()
+            cnx.close()
 
-        cnx = Conexion.conexion()
-        cursor = cnx.cursor()
-        query = "INSERT INTO clients ( nom, cognom, email, tel, data,tract) VALUES ( ?, ?, ?, ?, ?,?)"
-        cursor.execute(query, entradas)
-        cnx.commit()
-        cursor.close()
-        cnx.close()
+        elif campos == 3:
+            cnx = Conexion.conexion()
+            cursor = cnx.cursor()
+            query = "INSERT INTO productes ( categoria, tractament, descripcio) VALUES ( ?, ?, ?)"
+            cursor.execute(query, entradas)
+            cnx.commit()
+            cursor.close()
+            cnx.close()
+
+        elif campos == 2:
+            cnx = Conexion.conexion()
+            cursor = cnx.cursor()
+            query = "INSERT INTO casos ( tracta, descripcion) VALUES ( ?, ?)"
+            cursor.execute(query, entradas)
+            cnx.commit()
+            cursor.close()
+            cnx.close()
+
+        else:
+            print("No arriba res")
+
 
     def alta_producte(self):
         pass
