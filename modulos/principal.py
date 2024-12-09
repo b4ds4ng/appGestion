@@ -53,6 +53,8 @@ class Iniciador(tk.Tk, object):
 
     def entrys(self, x, y, ancho):
 
+        # Aquí es creen els entry de forma dinàmica.
+
         coordenadas = [(x, y, ancho)]
 
         for idx, (x, y, ancho) in enumerate(coordenadas):
@@ -223,7 +225,7 @@ class Iniciador(tk.Tk, object):
 
                 self.lateral_derecho.pack_forget()
                 Formularios.lateral_derecho(self)
-                Formularios.etiqueta(self,text="Cassos")
+                Formularios.etiqueta(self,text="Casos")
                 self.labels_entry(text="Categoria", x=10, y=50)
                 self.labels_entry(text="Tractament", x=230, y=50)
                 self.entrys(x=100, y=50, ancho=20)

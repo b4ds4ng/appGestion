@@ -4,6 +4,8 @@ from appGestion.datos.conexion import Conexion
 
 
 
+
+
 class Formularios(tk.Tk):
 
 
@@ -29,6 +31,7 @@ class Formularios(tk.Tk):
         self.lateral_derecho = lateral_derecho
 
 
+
     def lateral_derecho(self):
 
         self.lateral_derecho = tk.Frame(self, relief=tk.SOLID, bg="white")
@@ -44,18 +47,17 @@ class Formularios(tk.Tk):
             self.lateral_derecho_label.pack(expand=tk.NO)
 
     def leer_entradas(self):
-        #Fer que aquesta funció discrimini en funció de les dades que li arriben, per a
-        #després enviar les dades a la funció corresponent de la classe Conexión.
 
+        # Aquí es processen els entry que arriben des de principal.
 
         valores = []
         for entrada in self.entradas:
             valor = entrada.get()
             valores.append(valor)
         Conexion.alta_cliente(valores)
+        del valores
 
 
-        #return valores
     @staticmethod
     def prova_boton():
         print("botó cancel·lar premut" )
@@ -122,3 +124,4 @@ class Formularios(tk.Tk):
         """Dins del treeview col·locar tota la lògica d'interacció amb la IA"""
         self.lista_busqueda = ttk.Treeview(self.lateral_derecho, show="headings")
         self.lista_busqueda.place(x=2, y=30, width=989, height=615)
+
