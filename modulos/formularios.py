@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-from appGestion.datos.conexion import Conexion
+from appGestion.datos.conexion import Altas
 
 
 
@@ -32,6 +32,7 @@ class Formularios(tk.Tk):
 
 
 
+
     def lateral_derecho(self):
 
         self.lateral_derecho = tk.Frame(self, relief=tk.SOLID, bg="white")
@@ -54,9 +55,7 @@ class Formularios(tk.Tk):
         for entrada in self.entradas:
             valor = entrada.get()
             valores.append(valor)
-        Conexion.alta_cliente(valores)
-        del valores
-
+        Altas.alta_cliente(valores[:])
 
     @staticmethod
     def prova_boton():

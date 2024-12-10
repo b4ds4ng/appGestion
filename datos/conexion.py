@@ -1,4 +1,5 @@
 import sqlite3 as sq
+from tkinter import messagebox as msg
 
 
 
@@ -10,10 +11,6 @@ class Conexion:
     def __init__(self):
         super().__init__()
 
-        self.entradas = []
-
-
-
 
     @staticmethod
     def conexion():
@@ -24,10 +21,15 @@ class Conexion:
         return conec
 
 
+class Altas:
+
+    def __init__(self):
+        super().__init__()
+
     @staticmethod
     def alta_cliente(entradas):
+        # Aquí es processa el formulari de clients.
         campos = len(entradas)
-        #Aquí es processa el formulari de clients.
         if campos == 6:
             cnx = Conexion.conexion()
             cursor = cnx.cursor()
@@ -36,6 +38,9 @@ class Conexion:
             cnx.commit()
             cursor.close()
             cnx.close()
+            msg.showinfo("Clients", "Client afegit correctament")
+            print(entradas)
+
 
         # Aquí és processat el formulari dels productes.
         elif campos == 3:
@@ -46,6 +51,11 @@ class Conexion:
             cnx.commit()
             cursor.close()
             cnx.close()
+            msg.showinfo("productes", "Producte afegit correctament")
+            print(entradas)
+
+
+
 
         # Aquí és processat el formulari dels casos.
         elif campos == 2:
@@ -56,16 +66,17 @@ class Conexion:
             cnx.commit()
             cursor.close()
             cnx.close()
-
-
-
+            msg.showinfo("cas", "Cas afegit correctament")
+            print(entradas)
 
         else:
+            msg.showwarning("Error", "Alguna cosa no ha anat be")
+            print(entradas)
 
-            print("massa camps, els camps es sumen", campos)
-
-    """@staticmethod
+    """"@staticmethod
     def eliminar_entrys(entradas):
-         entradas = []"""
+        entradas = entradas 
+        
+        del entradas"""
 
 

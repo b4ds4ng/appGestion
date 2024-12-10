@@ -165,6 +165,7 @@ class Iniciador(tk.Tk, object):
             self.bproductos['state'] = tk.NORMAL
             self.bbuscar['state'] = tk.NORMAL
 
+
         if self.lateral_derecho is None:
             self.lateral_derecho(self)
 
@@ -186,6 +187,8 @@ class Iniciador(tk.Tk, object):
             self.entrys(x=490, y=80, ancho=20)
             self.botones_form()
             Formularios.listado_clients(self)
+
+
         
     def productes(self):
 
@@ -211,6 +214,7 @@ class Iniciador(tk.Tk, object):
             self.botones_form()
             Formularios.listado_productes(self)
 
+
     def cassos(self):
         if (self.bcasos['state'] == tk.NORMAL):
             self.bclientes['state'] = tk.NORMAL
@@ -232,6 +236,7 @@ class Iniciador(tk.Tk, object):
                 self.entrys(x=320, y=50, ancho=20)
                 self.botones_form()
                 Formularios.listado_cassos(self)
+
 
     def buscar(self):
         if (self.bbuscar['state'] == tk.NORMAL):
