@@ -57,7 +57,6 @@ class Altas:
             print("conexion", entradas)
             del  campos
 
-
         # Aquí és processat el formulari dels casos.
         elif campos  == 2:
             cnx = Conexion.conexion()
@@ -70,8 +69,6 @@ class Altas:
             msg.showinfo("cas", "Cas afegit correctament")
             print("conexion", entradas)
             del campos
-
-
 
         else:
             msg.showwarning("Error", "Alguna cosa no ha anat be")

@@ -13,8 +13,6 @@ class Iniciador(tk.Tk, object):
         self.lateral_derecho_label = None
         self.botones()
 
-
-
     def ventana_principal(self):
         self.title('Gestió')
         self.resizable(0,0)
@@ -47,20 +45,15 @@ class Iniciador(tk.Tk, object):
         for x, y in coordenadas:
             nombre.place(x=f"{x}", y=f"{y}")
 
-
     def entrys(self, x, y, ancho):
 
         # Aquí es creen els entry de forma dinàmica.
-
         coordenadas = [(x, y, ancho)]
 
         for idx, (x, y, ancho) in enumerate(coordenadas):
             entrada = tk.Entry(self.lateral_derecho)
             entrada.place(x=f"{x}", y=f"{y}", height=f"{ancho}")
             self.entradas.append(entrada)
-
-
-
 
     def botones(self):
 
@@ -189,8 +182,6 @@ class Iniciador(tk.Tk, object):
             self.botones_form()
             Formularios.listado_clients(self)
 
-
-        
     def productes(self):
 
         if (self.bproductos['state'] == tk.NORMAL):
@@ -215,7 +206,6 @@ class Iniciador(tk.Tk, object):
             self.botones_form()
             Formularios.listado_productes(self)
 
-
     def cassos(self):
         if (self.bcasos['state'] == tk.NORMAL):
             self.bclientes['state'] = tk.NORMAL
@@ -238,7 +228,6 @@ class Iniciador(tk.Tk, object):
                 self.botones_form()
                 Formularios.listado_cassos(self)
 
-
     def buscar(self):
         if (self.bbuscar['state'] == tk.NORMAL):
             self.bclientes['state'] = tk.NORMAL
@@ -258,16 +247,6 @@ class Iniciador(tk.Tk, object):
                 #self.entrys(x=80, y=50, ancho=20)
                 #Formularios.botones_buscar(self)
                 Formularios.lista_busqueda(self)
-
-    def bnuevo(self):
-        pass
-
-    def bguardar(self):
-        self.clients(self)
-
-
-    def bcancelar(self):
-        self.productes(self)
 
 
     def salida(self):

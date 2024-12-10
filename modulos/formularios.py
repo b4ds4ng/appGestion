@@ -43,25 +43,18 @@ class Formularios(tk.Tk):
             self.lateral_derecho_label.pack(expand=tk.NO)
 
     def leer_entradas(self):
-
         # Aquí es processen els entry que arriben des de principal.
-
-
         valores = []
         for entrada in self.entradas:
-
             valor = entrada.get()
             valores.append(valor)
         Altas.alta_cliente(valores)
-
-
 
     @staticmethod
     def prova_boton():
         print("botó cancel·lar premut" )
 
         # Aquí ficar la funció que neteja dels formularis. Reanomenar la funció.
-
 
     def botones_buscar(self):
 
