@@ -1,4 +1,4 @@
-from appGestion.datos.conexion import Conexion
+from appGestion.modulos.conexion import Conexion
 
 
 class Clientes:

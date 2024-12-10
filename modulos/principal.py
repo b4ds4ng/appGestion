@@ -1,8 +1,5 @@
 import tkinter as tk
-from tkinter import ttk
-import sqlite3
 from .formularios import Formularios
-from appGestion.datos.conexion import Conexion
 
 
 class Iniciador(tk.Tk, object):
@@ -62,6 +59,9 @@ class Iniciador(tk.Tk, object):
             entrada.place(x=f"{x}", y=f"{y}", height=f"{ancho}")
             self.entradas.append(entrada)
 
+
+
+
     def botones(self):
 
        ancho_boton = 20
@@ -96,11 +96,11 @@ class Iniciador(tk.Tk, object):
         y = 130
         coordenadas = [(x, y)]
 
-        self.bnuevo = tk.Button(self.lateral_derecho,
+        self.bnuevo = tk.Button(self.lateral_derecho, command=lambda: Formularios.leer_entradas(self),
                                   cursor="hand2")
         self.bguardar = tk.Button(self.lateral_derecho, command=lambda: Formularios.leer_entradas(self),
                                   cursor="hand2")
-        self.bcancelar = tk.Button(self.lateral_derecho, command=lambda: Formularios.prova_boton(),
+        self.bcancelar = tk.Button(self.lateral_derecho, command=lambda: self.bcancelar,
                                   cursor="hand2")
         boton_form = [("Nou", self.bnuevo),
                       ("Guardar", self.bguardar),
@@ -168,6 +168,7 @@ class Iniciador(tk.Tk, object):
 
         if self.lateral_derecho is None:
             self.lateral_derecho(self)
+
 
         else:
             self.lateral_derecho.pack_forget()
@@ -257,6 +258,17 @@ class Iniciador(tk.Tk, object):
                 #self.entrys(x=80, y=50, ancho=20)
                 #Formularios.botones_buscar(self)
                 Formularios.lista_busqueda(self)
+
+    def bnuevo(self):
+        pass
+
+    def bguardar(self):
+        self.clients(self)
+
+
+    def bcancelar(self):
+        self.productes(self)
+
 
     def salida(self):
         exit()

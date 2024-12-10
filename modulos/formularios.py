@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-from appGestion.datos.conexion import Altas
+from .conexion import Altas
 
 
 
@@ -14,21 +14,16 @@ class Formularios(tk.Tk):
 
         super().__init__()
 
-
-        self.nombre= None
-        self.entrada = []
-        self.bnuevo = False
-        self.bguardar = False
-        self.bcancelar = False
+        #self.entrada = []
         self.lateral_derecho_label = False
         self.entradas = []
         self.cercar = False
-        self.listar = False
         self.listar_clients = False
         self.listar_cassos = False
         self.listar_productes = False
         self.lista_busqueda = False
         self.lateral_derecho = lateral_derecho
+
 
 
 
@@ -51,11 +46,15 @@ class Formularios(tk.Tk):
 
         # Aquí es processen els entry que arriben des de principal.
 
+
         valores = []
         for entrada in self.entradas:
+
             valor = entrada.get()
             valores.append(valor)
-        Altas.alta_cliente(valores[:])
+        Altas.alta_cliente(valores)
+
+
 
     @staticmethod
     def prova_boton():
