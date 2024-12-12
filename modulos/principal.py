@@ -162,7 +162,6 @@ class Iniciador(tk.Tk, object):
         if self.lateral_derecho is None:
             self.lateral_derecho(self)
 
-
         else:
             self.lateral_derecho.pack_forget()
             Formularios.lateral_derecho(self)
@@ -243,9 +242,6 @@ class Iniciador(tk.Tk, object):
                 self.lateral_derecho.pack_forget()
                 Formularios.lateral_derecho(self)
                 Formularios.etiqueta(self, text="Consultes")
-                #self.labels_entry(text="Consulta", x=10, y=50)
-                #self.entrys(x=80, y=50, ancho=20)
-                #Formularios.botones_buscar(self)
                 Formularios.lista_busqueda(self)
 
 

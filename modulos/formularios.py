@@ -4,11 +4,7 @@ from .conexion import Altas
 
 
 
-
-
 class Formularios(tk.Tk):
-
-
 
     def __init__(self, lateral_derecho):
 
@@ -23,10 +19,6 @@ class Formularios(tk.Tk):
         self.listar_productes = False
         self.lista_busqueda = False
         self.lateral_derecho = lateral_derecho
-
-
-
-
 
     def lateral_derecho(self):
 
@@ -49,6 +41,8 @@ class Formularios(tk.Tk):
             valor = entrada.get()
             valores.append(valor)
         Altas.alta_cliente(valores)
+        del valores
+
 
     @staticmethod
     def prova_boton():
@@ -109,7 +103,6 @@ class Formularios(tk.Tk):
         self.listar_productes.heading("Us", text="Us")
         self.listar_productes.heading("Descripció", text="Descripció")
         self.listar_productes.place(x=2, y=200, width=989, height=400)
-
 
     def lista_busqueda(self):
         """Dins del treeview col·locar tota la lògica d'interacció amb la IA"""
