@@ -3,15 +3,14 @@ from tkinter import messagebox as msg
 
 
 
-
-
 """ Recordar de fer tots els ifs controlant els errors, try-except"""
 
 
 class Conexion:
 
-    def __init__(self):
+    def __init__(self, formularios):
         super().__init__()
+        self.formularios = formularios
 
 
     @staticmethod
@@ -30,8 +29,11 @@ class Altas:
         super().__init__()
 
 
+
+
     @staticmethod
     def alta_cliente(entradas):
+        from .formularios import Formularios
 
         # Aquí es processa el formulari de clients.
         campos = len(entradas)
@@ -44,10 +46,13 @@ class Altas:
             cursor.close()
             cnx.close()
             msg.showinfo("Clients", "Client afegit correctament")
-
+            entradas = None
+            campos = 0
+            print("en elif 6", entradas)
+            print(campos)
         # Aquí és processat el formulari dels productes.
         elif campos ==3:
-            print("campos 3", entradas)
+
             cnx = Conexion.conexion()
             cursor = cnx.cursor()
             query = "INSERT INTO productes ( categoria, tractament, descripcio) VALUES ( ?, ?, ?)"
@@ -56,10 +61,14 @@ class Altas:
             cursor.close()
             cnx.close()
             msg.showinfo("productes", "Producte afegit correctament")
+            Formularios.eliminar_lista_entradas(entradas)
+            print("en elif 3", entradas)
+            print("elif 3", campos)
+
 
         # Aquí és processat el formulari dels casos.
         elif campos  == 2:
-            print("campos 2", entradas)
+
             cnx = Conexion.conexion()
             cursor = cnx.cursor()
             query = "INSERT INTO casos ( tracta, descripcion) VALUES ( ?, ?)"
@@ -68,10 +77,16 @@ class Altas:
             cursor.close()
             cnx.close()
             msg.showinfo("cas", "Cas afegit correctament")
+            Formularios.eliminar_lista_entradas(entradas)
+            print("en elif 2", entradas)
+            print("elif 2", campos)
+
 
         else:
-            msg.showwarning("Error", "Alguna cosa no ha anat be")
 
+            msg.showwarning("Error", "Alguna cosa no ha anat be")
+            print("del else", entradas)
+            print("del else", campos)
 
 
 class Eliminar:

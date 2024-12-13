@@ -1,6 +1,6 @@
 import tkinter as tk
-from .formularios import Formularios
-
+from modulos.formularios import Formularios
+from modulos.conexion import Conexion, Altas
 
 class Iniciador(tk.Tk, object):
 
@@ -12,6 +12,9 @@ class Iniciador(tk.Tk, object):
         self.entradas = []
         self.lateral_derecho_label = None
         self.botones()
+
+
+
 
     def ventana_principal(self):
         self.title('Gestió')
@@ -89,11 +92,11 @@ class Iniciador(tk.Tk, object):
         y = 130
         coordenadas = [(x, y)]
 
-        self.bnuevo = tk.Button(self.lateral_derecho, command=lambda: Formularios.leer_entradas(self),
+        self.bnuevo = tk.Button(self.lateral_derecho,
                                   cursor="hand2")
         self.bguardar = tk.Button(self.lateral_derecho, command=lambda: Formularios.leer_entradas(self),
                                   cursor="hand2")
-        self.bcancelar = tk.Button(self.lateral_derecho, command=lambda: self.bcancelar,
+        self.bcancelar = tk.Button(self.lateral_derecho, command=lambda: Formularios.vaciar_campos(self),
                                   cursor="hand2")
         boton_form = [("Nou", self.bnuevo),
                       ("Guardar", self.bguardar),

@@ -14,11 +14,13 @@ class Formularios(tk.Tk):
         self.lateral_derecho_label = False
         self.entradas = []
         self.cercar = False
+        self.valores = None
         self.listar_clients = False
         self.listar_cassos = False
         self.listar_productes = False
         self.lista_busqueda = False
         self.lateral_derecho = lateral_derecho
+
 
     def lateral_derecho(self):
 
@@ -36,17 +38,23 @@ class Formularios(tk.Tk):
 
     def leer_entradas(self):
         # Aquí es processen els entry que arriben des de principal.
+
         valores = []
         for entrada in self.entradas:
             valor = entrada.get()
             valores.append(valor)
         Altas.alta_cliente(valores)
-        del valores
 
+
+    def vaciar_campos(self):
+        for entrada in self.entradas:
+            entrada.delete(0, tk.END)
 
     @staticmethod
-    def prova_boton():
-        print("botó cancel·lar premut" )
+    def eliminar_lista_entradas(entradas):
+      pass
+
+
 
         # Aquí ficar la funció que neteja dels formularis. Reanomenar la funció.
 
