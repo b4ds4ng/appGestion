@@ -14,7 +14,7 @@ class Iniciador(tk.Tk, object):
         self.botones()
 
 
-
+    """Es construeix la ventana principal de l'aplicació"""
 
     def ventana_principal(self):
         self.title('Gestió')
@@ -39,6 +39,8 @@ class Iniciador(tk.Tk, object):
         self.lateral_derecho = tk.Frame(self, relief=tk.SOLID, bg="white")
         self.lateral_derecho.pack(side="right", expand=tk.YES, fill=tk.BOTH)
 
+    """Es construeixen de forma dinàmica els labels"""
+
     def labels_entry(self, text, x, y):
         info_entry = [text]
         coordenadas = [(x, y)]
@@ -47,6 +49,8 @@ class Iniciador(tk.Tk, object):
                                    font=("Roboto", 11, "bold"))
         for x, y in coordenadas:
             nombre.place(x=f"{x}", y=f"{y}")
+
+    """Es construeixen de forma dinàmica els entrys"""
 
     def entrys(self, x, y, ancho):
 
@@ -57,6 +61,8 @@ class Iniciador(tk.Tk, object):
             entrada = tk.Entry(self.lateral_derecho)
             entrada.place(x=f"{x}", y=f"{y}", height=f"{ancho}")
             self.entradas.append(entrada)
+
+    """Creació dinàmicament dels botons del menú lateral esquerra."""
 
     def botones(self):
 
@@ -83,6 +89,8 @@ class Iniciador(tk.Tk, object):
                       width=ancho_boton, height=alto_boton)
         button.pack()
         self.encima_fuera(button)
+
+    """Es creen dinàmicament els botons dels formularis"""
 
     def botones_form(self):
 
@@ -123,6 +131,8 @@ class Iniciador(tk.Tk, object):
     def configurar_boton(self, button, text, ancho_menu, alto_menu):
         pass
 
+    """Funcions per a que els botons cambiin de color a posar-se a sobre"""
+
     def encima_fuera(self, button):
         button.bind("<Enter>", lambda event: self.on_enter(event, button))
         button.bind("<Leave>", lambda event: self.on_leave(event, button))
@@ -152,6 +162,10 @@ class Iniciador(tk.Tk, object):
 
     def on_fuera_bc(self, event, button):
         button.config(bg="red", fg="white")
+
+    """Quan premem el botó clients, aquest es dessabilita y es mostre el formulari per introduir 
+    les dades del client. Es passen les dades per formar els labels i els entry del formulari. També
+    per als productes i els casos"""
 
     def clients(self):
 
@@ -192,6 +206,7 @@ class Iniciador(tk.Tk, object):
             self.bproductos['state'] = tk.DISABLED
             self.bbuscar['state'] = tk.NORMAL
 
+
         if self.lateral_derecho is None:
             self.lateral_derecho(self)
 
@@ -215,6 +230,7 @@ class Iniciador(tk.Tk, object):
             self.bcasos['state'] = tk.DISABLED
             self.bbuscar['state'] = tk.NORMAL
 
+
             if self.lateral_derecho is None:
                 self.lateral_derecho(self)
 
@@ -229,6 +245,8 @@ class Iniciador(tk.Tk, object):
                 self.entrys(x=320, y=50, ancho=20)
                 self.botones_form()
                 Formularios.listado_cassos(self)
+
+    """Es crea el formulari per a fer les consultes."""
 
     def buscar(self):
         if (self.bbuscar['state'] == tk.NORMAL):

@@ -28,7 +28,8 @@ class Altas:
     def __init__(self):
         super().__init__()
 
-
+    """ Es processen els formularis en funció de la quantitat de dades que hi arriben. S'introdueixen les
+    dades a la taula corresponent a la base de dades."""
 
 
     @staticmethod

@@ -37,7 +37,8 @@ class Formularios(tk.Tk):
             self.lateral_derecho_label.pack(expand=tk.NO)
 
     def leer_entradas(self):
-        # Aquí es processen els entry que arriben des de principal.
+        """ Aquí es processen els entry que arriben des de principal, i s'envien les dades
+        a alta client en formularis.py."""
 
         valores = []
         for entrada in self.entradas:
@@ -45,7 +46,7 @@ class Formularios(tk.Tk):
             valores.append(valor)
         Altas.alta_cliente(valores)
 
-
+    """Es buiden els camps al prémer el botó cancel·lar"""
     def vaciar_campos(self):
         for entrada in self.entradas:
             entrada.delete(0, tk.END)
@@ -69,6 +70,9 @@ class Formularios(tk.Tk):
         self.cercar.pack_configure(side="left", anchor=tk.NE)
         self.cercar.pack(padx=10, pady=110)
         self.encima_fuera(self.cercar)
+
+    """Després d'introduir les dades en qualsevol formulari, es llistaran tots els clients, productes o 
+    casos en un treeview."""
 
     def listado_clients(self):
 
@@ -113,7 +117,7 @@ class Formularios(tk.Tk):
         self.listar_productes.place(x=2, y=200, width=989, height=400)
 
     def lista_busqueda(self):
-        """Dins del treeview col·locar tota la lògica d'interacció amb la IA"""
+        """Dins del treeview s'estableix tota la lògica d'interacció amb la IA"""
         self.lista_busqueda = ttk.Treeview(self.lateral_derecho, show="headings")
         self.lista_busqueda.place(x=2, y=30, width=989, height=615)
 
