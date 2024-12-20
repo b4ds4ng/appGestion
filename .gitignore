@@ -1,0 +1,3 @@
+# Evitar que s'actualitzi la base de dades
+
+/baseDatos/gestion.db
