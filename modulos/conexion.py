@@ -48,6 +48,7 @@ class Altas:
             cursor.close()
             cnx.close()
             msg.showinfo("Clients", "Client afegit correctament")
+            del entradas[:]
 
 
         # Aquí és processat el formulari dels productes.
@@ -61,6 +62,7 @@ class Altas:
             cursor.close()
             cnx.close()
             msg.showinfo("productes", "Producte afegit correctament")
+            del entradas[:]
 
 
 
@@ -75,6 +77,7 @@ class Altas:
             cursor.close()
             cnx.close()
             msg.showinfo("cas", "Cas afegit correctament")
+            del entradas[:]
 
 
         else:

@@ -39,20 +39,45 @@ class Formularios(tk.Tk):
     def leer_entradas(self):
         """ Aquí es processen els entry que arriben des de principal, i s'envien les dades
         a alta client en formularis.py."""
+        campos = len(self.entradas)
+        if campos == 6:
+            valores = []
+            for entrada in self.entradas:
+                valor = entrada.get()
+                valores.append(valor)
+            Altas.alta_cliente(valores)
+            print("en leer_entradas co 6 campos", valores)
+            del valores[:]
+            del self.entradas[:]
 
-        valores = []
-        for entrada in self.entradas:
-            valor = entrada.get()
-            valores.append(valor)
-        Altas.alta_cliente(valores)
+        if campos == 3:
+            valores = []
+            for entrada in self.entradas:
+                valor = entrada.get()
+                valores.append(valor)
+            Altas.alta_cliente(valores)
+            print("en leer_entradas con 3 campos", valores)
+            del valores[:]
+            del self.entradas[:]
+
+        if campos == 2:
+            valores = []
+            for entrada in self.entradas:
+                valor = entrada.get()
+                valores.append(valor)
+            Altas.alta_cliente(valores)
+            print("en leer_entradas con 2 campos", valores)
+            del valores[:]
+            del self.entradas[:]
 
     """Es buiden els camps al prémer el botó cancel·lar"""
     def vaciar_campos(self):
 
         for entrada in self.entradas:
             entrada.delete(0, tk.END)
+            print(self.entradas)
         del self.entradas[:]
-        print(self.entradas)
+
 
     @staticmethod
     def eliminar_lista_entradas():
