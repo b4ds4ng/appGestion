@@ -28,6 +28,7 @@ class Altas:
     def __init__(self):
         super().__init__()
 
+
     """ Es processen els formularis en funció de la quantitat de dades que hi arriben. S'introdueixen les
     dades a la taula corresponent a la base de dades."""
 
@@ -41,16 +42,14 @@ class Altas:
         if campos  == 6:
             cnx = Conexion.conexion()
             cursor = cnx.cursor()
-            query = "INSERT INTO clients ( nom, cognom, email, tel, data,tract) VALUES ( ?, ?, ?, ?, ?,?)"
+            query = "INSERT INTO clients ( nom, cognom, email, tel, data,tract) VALUES ( ?, ?, ?, ?, ?, ?)"
             cursor.execute(query, entradas)
             cnx.commit()
             cursor.close()
             cnx.close()
             msg.showinfo("Clients", "Client afegit correctament")
-            entradas = None
-            campos = 0
-            print("en elif 6", entradas)
-            print(campos)
+
+
         # Aquí és processat el formulari dels productes.
         elif campos ==3:
 
@@ -62,9 +61,7 @@ class Altas:
             cursor.close()
             cnx.close()
             msg.showinfo("productes", "Producte afegit correctament")
-            Formularios.eliminar_lista_entradas(entradas)
-            print("en elif 3", entradas)
-            print("elif 3", campos)
+
 
 
         # Aquí és processat el formulari dels casos.
@@ -78,15 +75,12 @@ class Altas:
             cursor.close()
             cnx.close()
             msg.showinfo("cas", "Cas afegit correctament")
-            Formularios.eliminar_lista_entradas(entradas)
-            print("en elif 2", entradas)
-            print("elif 2", campos)
 
 
         else:
 
             msg.showwarning("Error", "Alguna cosa no ha anat be")
-            print("del else", entradas)
+            print(entradas)
             print("del else", campos)
 
 

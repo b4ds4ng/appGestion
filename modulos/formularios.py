@@ -48,16 +48,18 @@ class Formularios(tk.Tk):
 
     """Es buiden els camps al prémer el botó cancel·lar"""
     def vaciar_campos(self):
+
         for entrada in self.entradas:
             entrada.delete(0, tk.END)
+        del self.entradas[:]
+        print(self.entradas)
 
     @staticmethod
-    def eliminar_lista_entradas(entradas):
+    def eliminar_lista_entradas():
+
       pass
 
-
-
-        # Aquí ficar la funció que neteja dels formularis. Reanomenar la funció.
+       # Aquí ficar la funció que neteja dels formularis. Reanomenar la funció.
 
     def botones_buscar(self):
 
