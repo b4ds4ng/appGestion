@@ -104,12 +104,15 @@ class Iniciador(tk.Tk, object):
                                   cursor="hand2")
         self.bguardar = tk.Button(self.lateral_derecho, command=lambda: Formularios.leer_entradas(self),
                                   cursor="hand2")
+        self.bactualizar = tk.Button(self.lateral_derecho,
+                                cursor="hand2")
         self.bcancelar = tk.Button(self.lateral_derecho, command=lambda: Formularios.vaciar_campos(self),
                                   cursor="hand2")
         boton_form = [("Nou", self.bnuevo),
-                      ("Guardar", self.bguardar),
-                      ("Cancel·lar", self.bcancelar)]
-        color = ["sky blue", "green", "red"]
+                      ("Eliminar", self.bguardar),
+                      ("Actualitzar", self.bactualizar),
+                      ("Cacel·lar", self.bcancelar)]
+        color = ["sky blue", "green", "MediumPurple1", "red"]
         for idx, (text, button) in enumerate(boton_form):
 
             self.configurar_boton(button, text, ancho_menu, alto_menu)
@@ -123,9 +126,12 @@ class Iniciador(tk.Tk, object):
             x += 100
             self.bguardar.place(x=f"{x}", y=f"{y}")
             x += 100
+            self.bactualizar.place(x=f"{x}", y=f"{y}")
+            x += 100
             self.bcancelar.place(x=f"{x}", y=f"{y}")
         self.encima_fuera(self.bnuevo)
         self.dentro_fuera_bguardar(self.bguardar)
+        self.dentro_fuera_bactualizar(self.bactualizar)
         self.dentro_fuera_bcancelar(self.bcancelar)
 
     def configurar_boton(self, button, text, ancho_menu, alto_menu):
@@ -162,6 +168,16 @@ class Iniciador(tk.Tk, object):
 
     def on_fuera_bc(self, event, button):
         button.config(bg="red", fg="white")
+
+    def dentro_fuera_bactualizar(self, button):
+        button.bind("<Enter>", lambda event: self.on_dentro_ba(event, button))
+        button.bind("<Leave>", lambda event: self.on_fuera_ba(event, button))
+
+    def on_dentro_ba(self, event, button):
+        button.config(bg="MediumPurple1", fg="purple4")
+
+    def on_fuera_ba(self, event, button):
+        button.config(bg="MediumPurple1", fg="white")
 
     """Quan premem el botó clients, aquest es dessabilita y es mostre el formulari per introduir 
     les dades del client. Es passen les dades per formar els labels i els entry del formulari. També
@@ -217,9 +233,9 @@ class Iniciador(tk.Tk, object):
             self.labels_entry(text="Tractament", x=10, y=50)
             self.labels_entry(text="Us", x=230, y=50)
             self.labels_entry(text="Descripció", x=400, y=50)
-            self.entrys(x=90, y=50, ancho=20)
-            self.entrys(x=270, y=50, ancho=20)
-            self.entrys(x=430, y=50, ancho=20)
+            self.entrys(x=100, y=50, ancho=20)
+            self.entrys(x=260, y=50, ancho=20)
+            self.entrys(x=485, y=50, ancho=20)
             self.botones_form()
             Formularios.listado_productes(self)
 
@@ -241,7 +257,7 @@ class Iniciador(tk.Tk, object):
                 Formularios.etiqueta(self,text="Casos")
                 self.labels_entry(text="Categoria", x=10, y=50)
                 self.labels_entry(text="Tractament", x=230, y=50)
-                self.entrys(x=100, y=50, ancho=20)
+                self.entrys(x=85, y=50, ancho=20)
                 self.entrys(x=320, y=50, ancho=20)
                 self.botones_form()
                 Formularios.listado_cassos(self)

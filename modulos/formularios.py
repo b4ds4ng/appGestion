@@ -46,7 +46,6 @@ class Formularios(tk.Tk):
                 valor = entrada.get()
                 valores.append(valor)
             Altas.alta_cliente(valores)
-            print("en leer_entradas co 6 campos", valores)
             del valores[:]
             del self.entradas[:]
 
@@ -56,7 +55,6 @@ class Formularios(tk.Tk):
                 valor = entrada.get()
                 valores.append(valor)
             Altas.alta_cliente(valores)
-            print("en leer_entradas con 3 campos", valores)
             del valores[:]
             del self.entradas[:]
 
@@ -66,7 +64,6 @@ class Formularios(tk.Tk):
                 valor = entrada.get()
                 valores.append(valor)
             Altas.alta_cliente(valores)
-            print("en leer_entradas con 2 campos", valores)
             del valores[:]
             del self.entradas[:]
 
