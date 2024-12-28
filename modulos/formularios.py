@@ -141,7 +141,8 @@ class Formularios(tk.Tk):
         self.listar_productes.place(x=2, y=200, width=989, height=400)
 
     def lista_busqueda(self):
-        """Dins del treeview s'estableix tota la lògica d'interacció amb la IA"""
+        """Dins del treeview s'estableix tota la lògica d'interacció amb la IA, que es troba al
+        mòdul consultesia.py"""
         self.lista_busqueda = ttk.Treeview(self.lateral_derecho, show="headings")
         self.lista_busqueda.place(x=2, y=30, width=989, height=615)
 

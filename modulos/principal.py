@@ -100,16 +100,16 @@ class Iniciador(tk.Tk, object):
         y = 130
         coordenadas = [(x, y)]
 
-        self.bnuevo = tk.Button(self.lateral_derecho,
+        self.bnuevo = tk.Button(self.lateral_derecho, command=lambda: Formularios.leer_entradas(self),
                                   cursor="hand2")
-        self.bguardar = tk.Button(self.lateral_derecho, command=lambda: Formularios.leer_entradas(self),
+        self.beliminar = tk.Button(self.lateral_derecho, command=lambda: Formularios.leer_entradas(self),
                                   cursor="hand2")
         self.bactualizar = tk.Button(self.lateral_derecho,
                                 cursor="hand2")
         self.bcancelar = tk.Button(self.lateral_derecho, command=lambda: Formularios.vaciar_campos(self),
                                   cursor="hand2")
         boton_form = [("Nou", self.bnuevo),
-                      ("Eliminar", self.bguardar),
+                      ("Eliminar", self.beliminar),
                       ("Actualitzar", self.bactualizar),
                       ("Cacel·lar", self.bcancelar)]
         color = ["sky blue", "green", "MediumPurple1", "red"]
@@ -124,13 +124,13 @@ class Iniciador(tk.Tk, object):
         for idx, (x, y) in enumerate(coordenadas):
             self.bnuevo.place(x=f"{x}", y=f"{y}")
             x += 100
-            self.bguardar.place(x=f"{x}", y=f"{y}")
+            self.beliminar.place(x=f"{x}", y=f"{y}")
             x += 100
             self.bactualizar.place(x=f"{x}", y=f"{y}")
             x += 100
             self.bcancelar.place(x=f"{x}", y=f"{y}")
         self.encima_fuera(self.bnuevo)
-        self.dentro_fuera_bguardar(self.bguardar)
+        self.dentro_fuera_bguardar(self.beliminar)
         self.dentro_fuera_bactualizar(self.bactualizar)
         self.dentro_fuera_bcancelar(self.bcancelar)
 

@@ -1,0 +1,1 @@
+"""Tota la lògica del reconeixement facial amb opencv"""
