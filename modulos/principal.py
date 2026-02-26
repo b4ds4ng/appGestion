@@ -2,7 +2,7 @@ import tkinter as tk
 from modulos.formularios import Formularios
 from modulos.conexion import Conexion, Altas
 
-class Iniciador(tk.Tk, object):
+class Iniciador(tk.Tk):
 
     def __init__(self):
         super().__init__()

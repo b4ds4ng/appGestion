@@ -35,7 +35,7 @@ class Altas:
 
     @staticmethod
     def alta_cliente(entradas):
-        from .formularios import Formularios
+        # from .formularios import Formularios
 
         # Aquí es processa el formulari de clients.
         campos = len(entradas)

@@ -38,7 +38,7 @@ class Formularios(tk.Tk):
 
     def leer_entradas(self):
         """ Aquí es processen els entry que arriben des de principal, i s'envien les dades
-        a alta client en formularis.py."""
+        a alta client en conexion.py."""
         campos = len(self.entradas)
         if campos == 6:
             valores = []
