@@ -1,7 +1,7 @@
 import sqlite3 as sq
 from tkinter import messagebox as msg
 
-
+""" Provant si es sincronitzen els arxius des de l'IDE Antigravity """
 
 """ Recordar de fer tots els ifs controlant els errors, try-except"""
 
@@ -42,7 +42,7 @@ class Altas:
         if campos  == 6:
             cnx = Conexion.conexion()
             cursor = cnx.cursor()
-            query = "INSERT INTO clients ( nom, cognom, email, tel, data,tract) VALUES ( ?, ?, ?, ?, ?, ?)"
+            query = "INSERT INTO clients ( nom, cognom, email, tel, data, tract) VALUES ( ?, ?, ?, ?, ?, ?)"
             cursor.execute(query, entradas)
             cnx.commit()
             cursor.close()
