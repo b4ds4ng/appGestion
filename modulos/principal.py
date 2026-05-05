@@ -20,8 +20,8 @@ class Iniciador(tk.Tk):
         self.title('Gestió')
         self.resizable(0,0)
         self.geometry("1200x650+100+10")
-        self.icono = tk.PhotoImage(file="./images/yii.png")
-        self.iconphoto(True, self.icono)
+        """self.icono = tk.PhotoImage(file="/images/yii.png")
+        self.iconphoto(True, self.icono)"""
 
     def paneles(self):
         
