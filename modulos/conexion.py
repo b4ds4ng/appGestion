@@ -1,3 +1,4 @@
+import os
 import sqlite3 as sq
 from tkinter import messagebox as msg
 
@@ -16,7 +17,11 @@ class Conexion:
     @staticmethod
     def conexion():
 
-        base_datos = "baseDatos/gestion.db"
+        # Obtenemos la ruta absoluta del archivo de la base de datos
+        directorio_actual = os.path.dirname(os.path.abspath(__file__))
+        directorio_base = os.path.dirname(directorio_actual)
+        base_datos = os.path.join(directorio_base, "baseDatos", "gestion.db")
+        
         conec = sq.connect(base_datos)
         return conec
 
