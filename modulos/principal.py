@@ -198,6 +198,7 @@ class Iniciador(tk.Tk):
         else:
             self.lateral_derecho.pack_forget()
             Formularios.lateral_derecho(self)
+            self.entradas.clear()
             Formularios.etiqueta(self, text="Clients")
             self.labels_entry( "Nom", 10, 50)
             self.labels_entry("Cognom", 180, 50)
@@ -229,6 +230,7 @@ class Iniciador(tk.Tk):
         else:
             self.lateral_derecho.pack_forget()
             Formularios.lateral_derecho(self)
+            self.entradas.clear()
             Formularios.etiqueta(self, text="Categoria")
             self.labels_entry(text="Tractament", x=10, y=50)
             self.labels_entry(text="Us", x=230, y=50)
@@ -254,6 +256,7 @@ class Iniciador(tk.Tk):
 
                 self.lateral_derecho.pack_forget()
                 Formularios.lateral_derecho(self)
+                self.entradas.clear()
                 Formularios.etiqueta(self,text="Casos")
                 self.labels_entry(text="Categoria", x=10, y=50)
                 self.labels_entry(text="Tractament", x=230, y=50)
@@ -278,6 +281,7 @@ class Iniciador(tk.Tk):
 
                 self.lateral_derecho.pack_forget()
                 Formularios.lateral_derecho(self)
+                self.entradas.clear()
                 Formularios.etiqueta(self, text="Consultes")
                 Formularios.lista_busqueda(self)
 

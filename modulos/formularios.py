@@ -46,8 +46,7 @@ class Formularios(tk.Tk):
                 valor = entrada.get()
                 valores.append(valor)
             Altas.alta_cliente(valores)
-            del valores[:]
-            del self.entradas[:]
+            Formularios.vaciar_campos(self)
 
         if campos == 3:
             valores = []
@@ -55,8 +54,7 @@ class Formularios(tk.Tk):
                 valor = entrada.get()
                 valores.append(valor)
             Altas.alta_cliente(valores)
-            del valores[:]
-            del self.entradas[:]
+            Formularios.vaciar_campos(self)
 
         if campos == 2:
             valores = []
@@ -64,16 +62,13 @@ class Formularios(tk.Tk):
                 valor = entrada.get()
                 valores.append(valor)
             Altas.alta_cliente(valores)
-            del valores[:]
-            del self.entradas[:]
+            Formularios.vaciar_campos(self)
 
     """Es buiden els camps al prémer el botó cancel·lar"""
     def vaciar_campos(self):
 
         for entrada in self.entradas:
             entrada.delete(0, tk.END)
-            print(self.entradas)
-        del self.entradas[:]
 
 
     @staticmethod
