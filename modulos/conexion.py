@@ -17,7 +17,7 @@ class Conexion:
     @staticmethod
     def conexion():
 
-        # Obtenemos la ruta absoluta del archivo de la base de datos
+        # Obtenim la ruta absoluta de l'arxiu de la base de dades
         directorio_actual = os.path.dirname(os.path.abspath(__file__))
         directorio_base = os.path.dirname(directorio_actual)
         base_datos = os.path.join(directorio_base, "baseDatos", "gestion.db")
