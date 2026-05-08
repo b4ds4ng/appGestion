@@ -102,6 +102,7 @@ class Eliminar:
             cnx.close()
             msg.showinfo("Clients", "Client eliminat correctament")
             del entradas[:]
+        
 
         # Aquí és processat el formulari dels productes.
         elif campos == 3:

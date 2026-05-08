@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-from .conexion import Altas
+from .conexion import Conexion,Altas
 
 
 
@@ -109,6 +109,16 @@ class Formularios(tk.Tk):
         self.listar_clients.heading("Us", text="Us")
         self.listar_clients.heading("Tractament", text="Tractament")
         self.listar_clients.place(x=2, y=200, width=989, height=400)
+        cnx = Conexion.conexion()
+        cursor = cnx.cursor()
+        cursor.execute("SELECT * FROM clients")
+        rows = cursor.fetchall()
+        for i in self.listar_clients.get_children():
+            self.listar_clients.delete(i)
+        for fila in rows:
+            self.listar_clients.insert('', "end", values=fila)
+        cursor.close()
+        cnx.close()
 
     def listado_cassos(self):
 
@@ -121,6 +131,16 @@ class Formularios(tk.Tk):
         self.listar_cassos.heading("Tractament", text="Tractament")
         self.listar_cassos.heading("Descripció", text="Descripció")
         self.listar_cassos.place(x=2, y=200, width=989, height=400)
+        cnx = Conexion.conexion()
+        cursor = cnx.cursor()
+        cursor.execute("SELECT * FROM casos")
+        rows = cursor.fetchall()
+        for i in self.listar_cassos.get_children():
+            self.listar_cassos.delete(i)
+        for fila in rows:
+            self.listar_cassos.insert('', "end", values=fila)
+        cursor.close()
+        cnx.close()
 
     def listado_productes(self):
 
@@ -134,6 +154,16 @@ class Formularios(tk.Tk):
         self.listar_productes.heading("Us", text="Us")
         self.listar_productes.heading("Descripció", text="Descripció")
         self.listar_productes.place(x=2, y=200, width=989, height=400)
+        cnx = Conexion.conexion()
+        cursor = cnx.cursor()
+        cursor.execute("SELECT * FROM productes")
+        rows = cursor.fetchall()
+        for i in self.listar_productes.get_children():
+            self.listar_productes.delete(i)
+        for fila in rows:
+            self.listar_productes.insert('', "end", values=fila)
+        cursor.close()
+        cnx.close()
 
     def lista_busqueda(self):
         """Dins del treeview s'estableix tota la lògica d'interacció amb la IA, que es troba al
