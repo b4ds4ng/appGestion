@@ -70,6 +70,34 @@ class Formularios(tk.Tk):
         for entrada in self.entradas:
             entrada.delete(0, tk.END)
 
+    def cargar_datos_seleccionados(self, event):
+        tree = event.widget
+        seleccion = tree.selection()
+        if seleccion:
+            item = seleccion[0]
+            valores = tree.item(item, "values")
+            
+            # Vaciamos los campos antes de llenarlos
+            Formularios.vaciar_campos(self)
+            
+            # Adaptamos los valores según el treeview para ignorar columnas que no tienen Entry
+            if tree == self.listar_clients:
+                # Saltamos el ID (índice 0)
+                valores_formulario = valores[1:]
+            elif tree == self.listar_cassos:
+                # Tomamos solo Categoria y Tractament
+                valores_formulario = valores[:2]
+            elif tree == self.listar_productes:
+                # Omitimos Categoria si no hay entry para ella (ajusta esto si hace falta)
+                valores_formulario = valores[1:]
+            else:
+                valores_formulario = valores
+
+            # Rellenamos los Entry correspondientes
+            for i, entry in enumerate(self.entradas):
+                if i < len(valores_formulario):
+                    entry.insert(0, valores_formulario[i])
+
 
     @staticmethod
     def eliminar_lista_entradas():
@@ -109,6 +137,10 @@ class Formularios(tk.Tk):
         self.listar_clients.heading("Us", text="Us")
         self.listar_clients.heading("Tractament", text="Tractament")
         self.listar_clients.place(x=2, y=200, width=989, height=400)
+        
+        # Enlazar el evento de selección
+        self.listar_clients.bind("<<TreeviewSelect>>", lambda event: Formularios.cargar_datos_seleccionados(self, event))
+
         cnx = Conexion.conexion()
         cursor = cnx.cursor()
         cursor.execute("SELECT * FROM clients")
@@ -131,6 +163,10 @@ class Formularios(tk.Tk):
         self.listar_cassos.heading("Tractament", text="Tractament")
         self.listar_cassos.heading("Descripció", text="Descripció")
         self.listar_cassos.place(x=2, y=200, width=989, height=400)
+        
+        # Enlazar el evento de selección
+        self.listar_cassos.bind("<<TreeviewSelect>>", lambda event: Formularios.cargar_datos_seleccionados(self, event))
+
         cnx = Conexion.conexion()
         cursor = cnx.cursor()
         cursor.execute("SELECT * FROM casos")
@@ -154,6 +190,10 @@ class Formularios(tk.Tk):
         self.listar_productes.heading("Us", text="Us")
         self.listar_productes.heading("Descripció", text="Descripció")
         self.listar_productes.place(x=2, y=200, width=989, height=400)
+        
+        # Enlazar el evento de selección
+        self.listar_productes.bind("<<TreeviewSelect>>", lambda event: Formularios.cargar_datos_seleccionados(self, event))
+
         cnx = Conexion.conexion()
         cursor = cnx.cursor()
         cursor.execute("SELECT * FROM productes")
