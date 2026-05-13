@@ -42,28 +42,25 @@ class Formularios(tk.Tk):
         a alta client en conexion.py."""
         campos = len(self.entradas)
         if campos == 6:
-            valores = []
-            for entrada in self.entradas:
-                valor = entrada.get()
-                valores.append(valor)
+            valores = [entrada.get() for entrada in self.entradas]
             Altas.alta_cliente(valores)
             Formularios.vaciar_campos(self)
+            if hasattr(self, 'listar_clients') and self.listar_clients:
+                Formularios.refrescar_treeview(self, self.listar_clients, "SELECT * FROM clients")
 
         if campos == 3:
-            valores = []
-            for entrada in self.entradas:
-                valor = entrada.get()
-                valores.append(valor)
+            valores = [entrada.get() for entrada in self.entradas]
             Altas.alta_cliente(valores)
             Formularios.vaciar_campos(self)
+            if hasattr(self, 'listar_productes') and self.listar_productes:
+                Formularios.refrescar_treeview(self, self.listar_productes, "SELECT * FROM productes")
 
         if campos == 2:
-            valores = []
-            for entrada in self.entradas:
-                valor = entrada.get()
-                valores.append(valor)
+            valores = [entrada.get() for entrada in self.entradas]
             Altas.alta_cliente(valores)
             Formularios.vaciar_campos(self)
+            if hasattr(self, 'listar_cassos') and self.listar_cassos:
+                Formularios.refrescar_treeview(self, self.listar_cassos, "SELECT * FROM casos")
 
     """Es buiden els camps al prémer el botó cancel·lar"""
     def vaciar_campos(self):
@@ -100,6 +97,25 @@ class Formularios(tk.Tk):
             for i, entry in enumerate(self.entradas):
                 if i < len(valores_formulario):
                     entry.insert(0, valores_formulario[i])
+
+    def refrescar_treeview(self, tree, query):
+        """Refresca los datos de un widget Treeview."""
+        if tree is None or not tree.winfo_exists():
+            return
+
+        # Limpiar treeview
+        for i in tree.get_children():
+            tree.delete(i)
+
+        # Cargar nuevos datos
+        cnx = Conexion.conexion()
+        cursor = cnx.cursor()
+        cursor.execute(query)
+        rows = cursor.fetchall()
+        for fila in rows:
+            tree.insert('', "end", values=fila)
+        cursor.close()
+        cnx.close()
 
 
     @staticmethod
@@ -144,16 +160,7 @@ class Formularios(tk.Tk):
         # Enlazar el evento de selección
         self.listar_clients.bind("<<TreeviewSelect>>", lambda event: Formularios.cargar_datos_seleccionados(self, event))
 
-        cnx = Conexion.conexion()
-        cursor = cnx.cursor()
-        cursor.execute("SELECT * FROM clients")
-        rows = cursor.fetchall()
-        for i in self.listar_clients.get_children():
-            self.listar_clients.delete(i)
-        for fila in rows:
-            self.listar_clients.insert('', "end", values=fila)
-        cursor.close()
-        cnx.close()
+        Formularios.refrescar_treeview(self, self.listar_clients, "SELECT * FROM clients")
 
     def listado_cassos(self):
 
@@ -171,16 +178,7 @@ class Formularios(tk.Tk):
         # Enlazar el evento de selección
         self.listar_cassos.bind("<<TreeviewSelect>>", lambda event: Formularios.cargar_datos_seleccionados(self, event))
 
-        cnx = Conexion.conexion()
-        cursor = cnx.cursor()
-        cursor.execute("SELECT * FROM casos")
-        rows = cursor.fetchall()
-        for i in self.listar_cassos.get_children():
-            self.listar_cassos.delete(i)
-        for fila in rows:
-            self.listar_cassos.insert('', "end", values=fila)
-        cursor.close()
-        cnx.close()
+        Formularios.refrescar_treeview(self, self.listar_cassos, "SELECT * FROM casos")
 
     def listado_productes(self):
 
@@ -199,16 +197,7 @@ class Formularios(tk.Tk):
         # Enlazar el evento de selección
         self.listar_productes.bind("<<TreeviewSelect>>", lambda event: Formularios.cargar_datos_seleccionados(self, event))
 
-        cnx = Conexion.conexion()
-        cursor = cnx.cursor()
-        cursor.execute("SELECT * FROM productes")
-        rows = cursor.fetchall()
-        for i in self.listar_productes.get_children():
-            self.listar_productes.delete(i)
-        for fila in rows:
-            self.listar_productes.insert('', "end", values=fila)
-        cursor.close()
-        cnx.close()
+        Formularios.refrescar_treeview(self, self.listar_productes, "SELECT * FROM productes")
 
     def lista_busqueda(self):
         """Dins del treeview s'estableix tota la lògica d'interacció amb la IA, que es troba al
@@ -221,57 +210,51 @@ class Formularios(tk.Tk):
         a actualitzar client, productes i cassos en conexion.py."""
         campos = len(self.entradas)
         if campos == 6:
-            valores = []
-            for entrada in self.entradas:
-                valor = entrada.get()
-                valores.append(valor)
+            valores = [entrada.get() for entrada in self.entradas]
             if self.id_seleccionado:
                 valores.append(self.id_seleccionado)
             Actualizar.actualizar_bds(valores)
             Formularios.vaciar_campos(self)
+            if hasattr(self, 'listar_clients') and self.listar_clients:
+                Formularios.refrescar_treeview(self, self.listar_clients, "SELECT * FROM clients")
 
         if campos == 3:
-            valores = []
-            for entrada in self.entradas:
-                valor = entrada.get()
-                valores.append(valor)
+            valores = [entrada.get() for entrada in self.entradas]
             Actualizar.actualizar_bds(valores)
             Formularios.vaciar_campos(self)
+            if hasattr(self, 'listar_productes') and self.listar_productes:
+                Formularios.refrescar_treeview(self, self.listar_productes, "SELECT * FROM productes")
 
         if campos == 2:
-            valores = []
-            for entrada in self.entradas:
-                valor = entrada.get()
-                valores.append(valor)
+            valores = [entrada.get() for entrada in self.entradas]
             Actualizar.actualizar_bds(valores)
             Formularios.vaciar_campos(self)
+            if hasattr(self, 'listar_cassos') and self.listar_cassos:
+                Formularios.refrescar_treeview(self, self.listar_cassos, "SELECT * FROM casos")
 
     def eliminar_entradas(self):
         """ Aquí es processen els entry que arriben des de principal, i s'envien les dades
         a eliminar client, productes i cassos en conexion.py."""
         campos = len(self.entradas)
         if campos == 6:
-            valores = []
-            for entrada in self.entradas:
-                valor = entrada.get()
-                valores.append(valor)
+            valores = [entrada.get() for entrada in self.entradas]
             if self.id_seleccionado:
                 valores.append(self.id_seleccionado)
             Eliminar.eliminar_bds(valores)
             Formularios.vaciar_campos(self)
+            if hasattr(self, 'listar_clients') and self.listar_clients:
+                Formularios.refrescar_treeview(self, self.listar_clients, "SELECT * FROM clients")
 
         if campos == 3:
-            valores = []
-            for entrada in self.entradas:
-                valor = entrada.get()
-                valores.append(valor)
+            valores = [entrada.get() for entrada in self.entradas]
             Eliminar.eliminar_bds(valores)
             Formularios.vaciar_campos(self)
+            if hasattr(self, 'listar_productes') and self.listar_productes:
+                Formularios.refrescar_treeview(self, self.listar_productes, "SELECT * FROM productes")
 
         if campos == 2:
-            valores = []
-            for entrada in self.entradas:
-                valor = entrada.get()
-                valores.append(valor)
+            valores = [entrada.get() for entrada in self.entradas]
             Eliminar.eliminar_bds(valores)
             Formularios.vaciar_campos(self)
+            if hasattr(self, 'listar_cassos') and self.listar_cassos:
+                Formularios.refrescar_treeview(self, self.listar_cassos, "SELECT * FROM casos")
