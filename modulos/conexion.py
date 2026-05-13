@@ -92,11 +92,11 @@ class Eliminar:
     def eliminar_bds(entradas):
 
         campos = len(entradas)
-        if campos == 6:
+        if campos == 7: # Son 6 campos + 1 ID
             cnx = Conexion.conexion()
             cursor = cnx.cursor()
-            query = "DELETE FROM clients ( nom, cognom, email, tel, data,tract) VALUES ( ?, ?, ?, ?, ?, ?)"
-            cursor.execute(query, entradas)
+            query = "DELETE FROM clients WHERE id=?"
+            cursor.execute(query, [entradas[-1]]) # Pasamos solo el ID que está en la última posición
             cnx.commit()
             cursor.close()
             cnx.close()
@@ -109,7 +109,7 @@ class Eliminar:
 
             cnx = Conexion.conexion()
             cursor = cnx.cursor()
-            query = "DELETE FROM productes ( categoria, tractament, descripcio) VALUES ( ?, ?, ?)"
+            query = "DELETE FROM productes WHERE categoria=? AND tractament=? AND descripcio=?"
             cursor.execute(query, list(entradas))
             cnx.commit()
             cursor.close()
@@ -122,7 +122,7 @@ class Eliminar:
 
             cnx = Conexion.conexion()
             cursor = cnx.cursor()
-            query = "DELETE FROM casos ( tracta, descripcion) VALUES ( ?, ?)"
+            query = "DELETE FROM casos WHERE tracta=? AND descripcion=?"
             cursor.execute(query, list(entradas))
             cnx.commit()
             cursor.close()
@@ -135,16 +135,16 @@ class Eliminar:
 
 
 class Actualizar:
-    """Aquesta classe actualitza registres en la base de dades, de qualsevol formulari."""
+    """Aquesta classe actualitza registres en la base de dades, de qualsevol dels formularis."""
 
     @staticmethod
     def actualizar_bds(entradas):
 
         campos = len(entradas)
-        if campos == 6:
+        if campos == 7: # Son 6 campos + 1 ID
             cnx = Conexion.conexion()
             cursor = cnx.cursor()
-            query = "UPDATE clients SET ( nom, cognom, email, tel, data,tract) VALUES ( ?, ?, ?, ?, ?, ?)"
+            query = "UPDATE clients SET nom=?, cognom=?, email=?, tel=?, data=?, tract=? WHERE id=?"
             cursor.execute(query, entradas)
             cnx.commit()
             cursor.close()
@@ -157,7 +157,7 @@ class Actualizar:
 
             cnx = Conexion.conexion()
             cursor = cnx.cursor()
-            query = "UPDATE productes SET ( categoria, tractament, descripcio) VALUES ( ?, ?, ?)"
+            query = "UPDATE productes SET categoria=?, tractament=?, Descripcio=?"
             cursor.execute(query, list(entradas))
             cnx.commit()
             cursor.close()
@@ -170,7 +170,7 @@ class Actualizar:
 
             cnx = Conexion.conexion()
             cursor = cnx.cursor()
-            query = "   update casos set ( tracta, descripcion) VALUES ( ?, ?)"
+            query = "UPDATE casos SET tracta=?, descripcion=?"
             cursor.execute(query, list(entradas))
             cnx.commit()
             cursor.close()

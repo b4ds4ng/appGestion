@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-from .conexion import Conexion,Altas
+from .conexion import Conexion,Altas,Eliminar,Actualizar
 
 
 
@@ -15,6 +15,7 @@ class Formularios(tk.Tk):
         self.entradas = []
         self.cercar = False
         self.valores = None
+        self.id_seleccionado = None
         self.listar_clients = False
         self.listar_cassos = False
         self.listar_productes = False
@@ -81,13 +82,15 @@ class Formularios(tk.Tk):
             Formularios.vaciar_campos(self)
             
             # Adaptamos los valores según el treeview para ignorar columnas que no tienen Entry
-            if tree == self.listar_clients:
-                # Saltamos el ID (índice 0)
+            if tree == getattr(self, "listar_clients", None):
+                # Guardamos el ID (índice 0) para actualizar o borrar luego
+                self.id_seleccionado = valores[0]
+                # Saltamos el ID (índice 0) para rellenar los Entry
                 valores_formulario = valores[1:]
-            elif tree == self.listar_cassos:
+            elif tree == getattr(self, "listar_cassos", None):
                 # Tomamos solo Categoria y Tractament
                 valores_formulario = valores[:2]
-            elif tree == self.listar_productes:
+            elif tree == getattr(self, "listar_productes", None):
                 # Omitimos Categoria si no hay entry para ella (ajusta esto si hace falta)
                 valores_formulario = valores[1:]
             else:
@@ -211,3 +214,62 @@ class Formularios(tk.Tk):
         self.lista_busqueda = ttk.Treeview(self.lateral_derecho, show="headings")
         self.lista_busqueda.place(x=2, y=30, width=989, height=615)
 
+    def actualizar_entradas(self):
+        """ Aquí es processen els entry que arriben des de principal, i s'envien les dades
+        a actualitzar client, productes i cassos en conexion.py."""
+        campos = len(self.entradas)
+        if campos == 6:
+            valores = []
+            for entrada in self.entradas:
+                valor = entrada.get()
+                valores.append(valor)
+            if self.id_seleccionado:
+                valores.append(self.id_seleccionado)
+            Actualizar.actualizar_bds(valores)
+            Formularios.vaciar_campos(self)
+
+        if campos == 3:
+            valores = []
+            for entrada in self.entradas:
+                valor = entrada.get()
+                valores.append(valor)
+            Actualizar.actualizar_bds(valores)
+            Formularios.vaciar_campos(self)
+
+        if campos == 2:
+            valores = []
+            for entrada in self.entradas:
+                valor = entrada.get()
+                valores.append(valor)
+            Actualizar.actualizar_bds(valores)
+            Formularios.vaciar_campos(self)
+
+    def eliminar_entradas(self):
+        """ Aquí es processen els entry que arriben des de principal, i s'envien les dades
+        a eliminar client, productes i cassos en conexion.py."""
+        campos = len(self.entradas)
+        if campos == 6:
+            valores = []
+            for entrada in self.entradas:
+                valor = entrada.get()
+                valores.append(valor)
+            if self.id_seleccionado:
+                valores.append(self.id_seleccionado)
+            Eliminar.eliminar_bds(valores)
+            Formularios.vaciar_campos(self)
+
+        if campos == 3:
+            valores = []
+            for entrada in self.entradas:
+                valor = entrada.get()
+                valores.append(valor)
+            Eliminar.eliminar_bds(valores)
+            Formularios.vaciar_campos(self)
+
+        if campos == 2:
+            valores = []
+            for entrada in self.entradas:
+                valor = entrada.get()
+                valores.append(valor)
+            Eliminar.eliminar_bds(valores)
+            Formularios.vaciar_campos(self)

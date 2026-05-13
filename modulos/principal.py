@@ -102,9 +102,9 @@ class Iniciador(tk.Tk):
 
         self.bnuevo = tk.Button(self.lateral_derecho, command=lambda: Formularios.leer_entradas(self),
                                   cursor="hand2")
-        self.beliminar = tk.Button(self.lateral_derecho, command=lambda: Formularios.leer_entradas(self),
+        self.beliminar = tk.Button(self.lateral_derecho, command=lambda: Formularios.eliminar_entradas(self),
                                   cursor="hand2")
-        self.bactualizar = tk.Button(self.lateral_derecho,
+        self.bactualizar = tk.Button(self.lateral_derecho, command=lambda: Formularios.actualizar_entradas(self),
                                 cursor="hand2")
         self.bcancelar = tk.Button(self.lateral_derecho, command=lambda: Formularios.vaciar_campos(self),
                                   cursor="hand2")
