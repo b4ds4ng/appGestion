@@ -157,11 +157,12 @@ class Formularios(tk.Tk):
 
     def listado_cassos(self):
 
-        columns = ("Categoria", "Tractament", "Descripció")
+        columns = ("Id","Categoria", "Tractament", "Descripció")
         self.listar_cassos = ttk.Treeview(self.lateral_derecho,
                                           columns=columns, show="headings")
         for text in columns:
             self.listar_cassos.column(column=f"{text}", width=50)
+        self.listar_cassos.heading("Id", text="Id")
         self.listar_cassos.heading("Categoria", text="Categoria")
         self.listar_cassos.heading("Tractament", text="Tractament")
         self.listar_cassos.heading("Descripció", text="Descripció")
@@ -183,11 +184,12 @@ class Formularios(tk.Tk):
 
     def listado_productes(self):
 
-        columns = ("Categoria", "Nom", "Us", "Descripció")
+        columns = ("Id","Categoria", "Nom", "Us", "Descripció")
         self.listar_productes = ttk.Treeview(self.lateral_derecho, columns=columns,
                                              show="headings")
         for text in columns:
             self.listar_productes.column(column=f"{text}", width=50)
+        self.listar_productes.heading("Id", text="Id")
         self.listar_productes.heading("Categoria", text="Categoria")
         self.listar_productes.heading("Nom", text="Nom")
         self.listar_productes.heading("Us", text="Us")
