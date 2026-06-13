@@ -137,7 +137,7 @@ class Iniciador(tk.Tk):
     def configurar_boton(self, button, text, ancho_menu, alto_menu):
         pass
 
-    """Funcions per a que els botons cambiin de color a posar-se a sobre"""
+    """Funcions per a que els botons canviïn de color a posar-se a sobre"""
 
     def encima_fuera(self, button):
         button.bind("<Enter>", lambda event: self.on_enter(event, button))

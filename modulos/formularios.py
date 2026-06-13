@@ -118,12 +118,12 @@ class Formularios(tk.Tk):
         cnx.close()
 
 
-    @staticmethod
+    """@staticmethod
     def eliminar_lista_entradas():
 
       pass
 
-       # Aquí ficar la funció que neteja dels formularis. Reanomenar la funció.
+       # Aquí ficar la funció que neteja dels formularis. Reanomenar la funció."""
 
     def botones_buscar(self):
 
